@@ -65,7 +65,7 @@ Acesse os repositórios do instrutor:
 
 
 
-![Prévia da página de login do projeto Code Connect](login-preview.png)
+![Prévia da página de login do projeto Code Connect](/img/login-preview.png)
 
 ---
 

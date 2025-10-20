@@ -1,0 +1,47 @@
+function PaginaDeLogin() {
+  return (
+    <div className='container-login'>
+      <!-- Imagem exibida na tela de login -->
+      <img 
+        src='./img/imagem-login.png' 
+        alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' 
+      />
+
+      <!-- Seção que contém o formulário de login -->
+      <section>
+        <!-- Início do formulário -->
+        <form>
+          <!-- Componentes que provavelmente mostram o título e subtítulo da página -->
+          <Titulo />
+          <Subtitulo />
+
+          <!-- Campo para digitar o e-mail ou usuário -->
+          <div className='form__campo-digitacao'>
+            <!-- Rótulo para o campo de e-mail -->
+            <label for='email'>E-mail ou usuário</label>
+            <!-- Campo de entrada para o usuário inserir e-mail ou nome de usuário -->
+            <input 
+              type='email' 
+              placeholder='Digite o seu e-mail ou usuário' 
+              required 
+              id='email' 
+            />
+          </div>
+
+          <!-- Campo para digitar a senha -->
+          <div className='form__campo-digitacao'>
+            <!-- Rótulo para o campo de senha -->
+            <label for='senha'>Senha</label>
+            <!-- Campo de entrada para senha -->
+            <input 
+              type='password' 
+              placeholder='Digite sua senha' 
+              required 
+              id='senha' 
+            />
+          </div>
+        </form>
+      </section>
+    </div>
+  )
+}
