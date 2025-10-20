@@ -28,7 +28,7 @@ Você pode [acessar o código fonte do projeto inicial](https://github.com/Claud
 
 ## 🎨 Figma
 
-Você pode conferir o Figma da aplicação clicando [aqui](https://www.figma.com/file/SASyBm2k3IlqrO8qI1Otg1/CodeConnect-%7C-React%3A-Componentização-e-conceitos-básicos-(JSX)).
+Você pode conferir o Figma da aplicação clicando [aqui](img/imagem-login.png).
 
 ## 🛠️ Abrir e rodar o projeto
 
