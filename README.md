@@ -24,7 +24,7 @@ As técnicas e tecnologias utilizadas pra isso são:
 
 ## 📁 Acesso ao projeto
 
-Você pode [acessar o código fonte do projeto inicial](https://github.com/MonicaHillman/3492-React-componentesi/tree/projeto-base) ou [baixá-lo](https://github.com/MonicaHillman/3492-React-componentes/archive/refs/heads/projeto-base.zip).
+Você pode [acessar o código fonte do projeto inicial](https://github.com/ClaudenyAvelino/JOVEM-TECH-TC-REACT-JS) ou [baixá-lo](https://github.com/ClaudenyAvelino/JOVEM-TECH-TC-REACT-JS/archive/refs/heads/main.zip).
 
 ## 🎨 Figma
 
