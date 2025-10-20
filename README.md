@@ -28,7 +28,7 @@ Você pode [acessar o código fonte do projeto inicial](https://github.com/Claud
 
 ## 🎨 Protótipo
 
-Você pode conferir o Protótipo da aplicação clicando [aqui](img/Login-2.png).
+Você pode conferir o Protótipo da aplicação clicando [aqui](img/React_%20construíndo%20componentes%20com%20JSX%20_%20CodeConnect.pdf).
 
 ## 🛠️ Abrir e rodar o projeto
 
