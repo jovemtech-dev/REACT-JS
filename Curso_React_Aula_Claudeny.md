@@ -65,7 +65,7 @@ Acesse os repositórios do instrutor:
 
 
 
-![Prévia da página de login do projeto Code Connect](/img/login-preview.png)
+![Prévia da página de login do projeto Code Connect](login-preview.png)
 
 ---
 
@@ -85,6 +85,14 @@ Essas ferramentas permitem criar e exibir componentes na tela.
 
 ## 🟦 Slide 6 – Instalando React e React DOM
 
+### Instalando o React
+Para isso, vamos abrir a página [http://cdnjs.com/libraries/react](http://cdnjs.com/libraries/react) e copiar o primeiro link da lista da página inicial, com cor de fundo laranja.
+
+### Instalando o React DOM
+Além do React, precisamos instalar outras coisas, como o **react-dom**. Para baixá-lo, acessamos a página [http://cdnjs.com/libraries/react-dom](http://cdnjs.com/libraries/react-dom).
+
+
+
 Adicione dentro da tag `<body>` do seu `index.html`:
 
 ```html
@@ -97,6 +105,11 @@ Adicione dentro da tag `<body>` do seu `index.html`:
 ---
 
 ## 🟦 Slide 7 – Instalando o Babel
+
+### Instalando o Babel
+Por fim, precisamos instalar o **Babel**. Abrindo a página [http://cdnjs.com/libraries/babel-standalone](http://cdnjs.com/libraries/babel-standalone), também vamos copiar a *Script Tag* do primeiro link.
+
+
 
 Adicione também o Babel:
 
