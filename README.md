@@ -28,7 +28,7 @@ Você pode [acessar o código fonte do projeto inicial](https://github.com/Claud
 
 ## 🎨 Figma
 
-Você pode conferir o Figma da aplicação clicando [aqui](img/imagem-login.png).
+Você pode conferir o Figma da aplicação clicando [aqui](img/Login-2.png).
 
 ## 🛠️ Abrir e rodar o projeto
 
