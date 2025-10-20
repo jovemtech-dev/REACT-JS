@@ -26,9 +26,9 @@ As técnicas e tecnologias utilizadas pra isso são:
 
 Você pode [acessar o código fonte do projeto inicial](https://github.com/ClaudenyAvelino/JOVEM-TECH-TC-REACT-JS) ou [baixá-lo](https://github.com/ClaudenyAvelino/JOVEM-TECH-TC-REACT-JS/archive/refs/heads/main.zip).
 
-## 🎨 Figma
+## 🎨 Protótipo
 
-Você pode conferir o Figma da aplicação clicando [aqui](img/Login-2.png).
+Você pode conferir o Protótipo da aplicação clicando [aqui](img/Login-2.png).
 
 ## 🛠️ Abrir e rodar o projeto
 
