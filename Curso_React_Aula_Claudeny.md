@@ -510,6 +510,139 @@ Será que o React tem alguma solução para evitar essa repetição?
 > 🤔 Prepare-se para aprender sobre componentes reutilizáveis com props!
 
 
+## 🟦 Slide 18 – Componentização e Reutilização com React##
+
+Na última aula, criamos manualmente dois campos de digitação: um para e-mail/usuário e outro para senha.
+Analisando o código, percebemos que as estruturas são praticamente idênticas.
+
+📌 Para evitar código duplicado, aprendemos agora a criar componentes reutilizáveis com React.
+
+🧩 **Criando o componente** <CampoDeDigitacao />
+
+Acima da função PaginaDeLogin(), criamos uma nova função chamada CampoDeDigitacao():
+
+```
+function CampoDeDigitacao() {
+  return (
+    <div className='form__campo-digitacao'>
+      <label for='email'>E-mail ou usuário</label>
+      <input 
+        type='email'
+        placeholder='Digite o seu e-mail ou usuário'
+        required
+        id='email' 
+      />
+    </div>
+  )
+}
+```
+
+✅ **Este componente encapsula todo o bloco referente ao input de e-mail, mantendo o mesmo comportamento visual e funcional.**
+
+
+⚙️ **Aplicando o novo componente**
+
+No componente PaginaDeLogin, substituímos o trecho antigo de e-mail pelo uso do novo componente:
+
+```
+function PaginaDeLogin() {
+  return (
+    <div className='container-login'>
+      <img src='./img/imagem-login.png' alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' />
+      <section>
+        <form>
+          <Titulo />
+          <Subtitulo />
+
+          <CampoDeDigitacao />
+
+          <div className='form__campo-digitacao'>
+            <label for='senha'>Senha</label>
+            <input 
+              type='password'
+              placeholder='Digite sua senha'
+              required
+              id='senha' 
+            />
+          </div>
+        </form>
+      </section>
+    </div>
+  )
+}
+```
+>🧠 O campo de e-mail foi componentizado, mas o de senha ainda está fixo. Veremos mais adiante como reutilizar também com parâmetros.
+
+## 🟦 Slide 19 – Criando o componente <Botao />
+
+Com base na mesma lógica, criamos um componente para o botão de envio do formulário.
+
+1️⃣ **Criando o componente:**
+
+```
+function Botao() {
+  return (
+    <button type='submit'>Login</button>
+  )
+}
+```
+2️⃣ **Utilizando o componente:**
+
+No lugar do botão dentro do form, utilizamos:
+
+```
+<Botao />
+```
+
+💻 **Resultado final:**
+
+```
+function PaginaDeLogin() {
+  return (
+    <div className='container-login'>
+      <img src='./img/imagem-login.png' alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' />
+      <section>
+        <form>
+          <Titulo />
+          <Subtitulo />
+
+          <CampoDeDigitacao />
+
+          <div className='form__campo-digitacao'>
+            <label for='senha'>Senha</label>
+            <input 
+              type='password'
+              placeholder='Digite sua senha'
+              required
+              id='senha' 
+            />
+          </div>
+
+          <Botao />
+        </form>
+      </section>
+    </div>
+  )
+}
+```
+
+🎯 **Conclusão**
+
+Agora temos dois novos componentes:
+| Componente             | Função                                       |
+| ---------------------- | -------------------------------------------- |
+| `<CampoDeDigitacao />` | Encapsula o bloco de input e label de e-mail |
+| `<Botao />`            | Encapsula o botão "Login"                    |
+
+🧠 **Reflexão**
+
+Criar componentes ajuda na organização e manutenção do código.
+
+Podemos decidir componentizar no início do projeto ou durante o desenvolvimento, ao perceber repetições.
+
+A próxima aula mostrará como tornar componentes reutilizáveis com parâmetros (props).
+
+
 
 
 📎 **Links Úteis**  
