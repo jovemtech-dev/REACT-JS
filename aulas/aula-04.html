@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles/styles.css" />
-  <link rel="stylesheet" href="./styles/PaginaDeLogin.css" />
-  <link rel="stylesheet" href="./styles/CampoDeDigitacao.css" />
-  <title>Login | CodeConnect</title>
-</head>
-
 <body>
+  <div id="root"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"
     integrity="sha512-8Q6Y9XnTbOE+JNvjBQwJ2H8S+UV4uA6hiRykhdtIyDYZ2TprdNmWOUaKdGzOhyr4dCyk287OejbPvwl7lrfqrQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -42,10 +28,22 @@
         <h2 className='form__texto'>Boas-vindas! Faça seu login.</h2 >
       )
     }
+    function PaginaDeLogin() {
+      return (<div className='container-login'>
+        <img src='/img/imagem-login.png' alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' />
+        <section>
+          <form>
+            <Titulo />
+            <Subtitulo />
+          </form>
+        </section>
+      </div>
 
-    //Código 
+      )
+    }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<PaginaDeLogin />)
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<Subtitulo />)
   </script>
   <!--
 Observações:
@@ -61,5 +59,3 @@ As classes form__titulo e form__texto provavelmente são definidas em um arquivo
 CSS à parte, seguindo a convenção BEM (Block Element Modifier).
 -->
 </body>
-
-</html>
