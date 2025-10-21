@@ -398,7 +398,118 @@ Como renderizar múltiplos elementos com ReactDOM;
 Como estruturar melhor uma interface com React.
 
 
-slid
+# 🟦 Slide 17 – Criando Campos de Entrada (Inputs)
+
+Na aula anterior, aprendemos a exibir múltiplos componentes em uma única tela.
+Agora, vamos criar os campos de entrada (inputs) que permitirão ao usuário digitar seu e-mail e senha.
+
+🧩 **Etapas desta aula:**
+
+Criar o campo de e-mail ou usuário
+
+Criar o campo de senha
+
+Entender a estrutura HTML e as validações automáticas
+
+🏗️ **Adicionando o campo de e-mail**
+
+Dentro do componente PaginaDeLogin, após o <Subtitulo />, criamos uma div para agrupar o label e o input:
+
+```
+<div className='form__campo-digitacao'>
+  <label for='email'>E-mail ou usuário</label>
+  <input 
+    type='email'
+    placeholder='Digite o seu e-mail ou usuário'
+    required
+    id='email' 
+  />
+</div>
+```
+>📌 A classe form__campo-digitacao já está estilizada no arquivo CampoDeDigitacao.css
+
+🔎 **O que estamos fazendo:**
+| Elemento             | Função                                                 |
+| -------------------- | ------------------------------------------------------ |
+| `label for='email'`  | Cria um rótulo para o campo, associado via `id`        |
+| `input type='email'` | Campo de digitação com validação automática de formato |
+| `placeholder`        | Texto auxiliar que aparece dentro do input             |
+| `required`           | Torna o campo obrigatório                              |
+| `id='email'`         | Liga o `label` ao `input`                              |
+
+🔐 **Adicionando o campo de senha**
+
+Logo após a div do e-mail, criamos outra div com a mesma estrutura, mas com ajustes para senha:
+
+```
+<div className='form__campo-digitacao'>
+  <label for='senha'>Senha</label>
+  <input 
+    type='password'
+    placeholder='Digite sua senha'
+    required
+    id='senha' 
+  />
+</div>
+```
+>📌 O tipo password faz com que os caracteres digitados sejam ocultados (aparecem como asteriscos).
+
+
+🧠 **O que aprendemos aqui:**
+
+Reutilização de estrutura: ambas as divs seguem o mesmo padrão.
+
+HTML semântico: usando label para acessibilidade e organização.
+
+Validações nativas: com type='email' e required, o navegador já ajuda no controle de dados.
+
+✅ **Resultado final do componente**
+
+```
+function PaginaDeLogin() {
+  return (
+    <div className='container-login'>
+      <img 
+        src='./img/imagem-login.png' 
+        alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' 
+      />
+      <section>
+        <form>
+          <Titulo />
+          <Subtitulo />
+
+          <div className='form__campo-digitacao'>
+            <label for='email'>E-mail ou usuário</label>
+            <input 
+              type='email'
+              placeholder='Digite o seu e-mail ou usuário'
+              required
+              id='email' 
+            />
+          </div>
+
+          <div className='form__campo-digitacao'>
+            <label for='senha'>Senha</label>
+            <input 
+              type='password'
+              placeholder='Digite sua senha'
+              required
+              id='senha' 
+            />
+          </div>
+        </form>
+      </section>
+    </div>
+  )
+}
+```
+💬 **Spoiler da próxima aula...**
+>Repare que temos duas estruturas idênticas com pequenas diferenças (label, tipo, placeholder, id).
+Será que o React tem alguma solução para evitar essa repetição?
+
+> 🤔 Prepare-se para aprender sobre componentes reutilizáveis com props!
+
+
 
 
 📎 **Links Úteis**  
