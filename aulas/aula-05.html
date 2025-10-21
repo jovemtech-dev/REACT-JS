@@ -1,0 +1,61 @@
+<body>
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"
+    integrity="sha512-8Q6Y9XnTbOE+JNvjBQwJ2H8S+UV4uA6hiRykhdtIyDYZ2TprdNmWOUaKdGzOhyr4dCyk287OejbPvwl7lrfqrQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"
+    integrity="sha512-MOCpqoRoisCTwJ8vQQiciZv0qcpROCidek3GTFS6KTk2+y7munJIlKCVkFCYY+p3ErYFXCjmFjnfTTRSC1OHWQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.3/babel.min.js"
+    integrity="sha512-MIXku7j6pJ0hqd2T4WXZMGerp3BU9B91rfLRDp/McDBNNdnwTD+yLJaz9AHcYXT6k16dYTkG9S2KRPGxaBIfBQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script type="text/babel">
+    // Função Titulo: componente funcional do React
+    // Retorna um elemento <h1> com uma classe CSS chamada "form__titulo"
+    // O texto exibido é "Login"
+    function Titulo() {
+      return (
+        <h1 className='form__titulo'>Login</h1>
+      )
+    }
+
+    // Função Subtitulo: outro componente funcional
+    // Retorna um <h2> com a classe "form__texto"
+    // Exibe a mensagem de boas-vindas ao usuário
+    function Subtitulo() {
+      return (
+        <h2 className='form__texto'>Boas-vindas! Faça seu login.</h2 >
+      )
+    }
+    function PaginaDeLogin() {
+      return (<div className='container-login'>
+        <img src='/img/imagem-login.png' alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' />
+        <section>
+          <form>
+            <Titulo />
+            <Subtitulo />
+          </form>
+        </section>
+      </div>
+
+      )
+    }
+
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<Subtitulo />)
+  </script>
+  <!--
+Observações:
+
+O atributo type="text/babel" no <script> indica que esse código deve 
+ser transformado pelo Babel antes de ser executado, pois ele usa JSX,
+que os navegadores não entendem nativamente.
+
+Esses componentes não estão sendo renderizados no DOM automaticamente — 
+seria necessário usar o ReactDOM.render(...) ou incluí-los dentro de outro componente que seja renderizado.
+
+As classes form__titulo e form__texto provavelmente são definidas em um arquivo 
+CSS à parte, seguindo a convenção BEM (Block Element Modifier).
+-->
+</body>
