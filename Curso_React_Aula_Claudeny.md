@@ -95,7 +95,8 @@ Além do React, precisamos instalar outras coisas, como o **react-dom**. Para ba
 
 Adicione dentro da tag `<body>` do seu `index.html`:
 
-```html
+```
+html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 ```
@@ -113,7 +114,8 @@ Por fim, precisamos instalar o **Babel**. Abrindo a página [http://cdnjs.com/li
 
 Adicione também o Babel:
 
-```html
+```
+html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.3/babel.min.js"></script>
 ```
 
@@ -124,7 +126,8 @@ No React, ele converte componentes escritos com HTML + JS em código executável
 
 ## 🟦 Slide 8 – Estrutura Final do index.html
 
-```html
+```
+html
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
@@ -155,7 +158,8 @@ Vamos criar o primeiro componente React: o título da página de login.
 
 Dentro da tag `<body>` do seu `index.html`, adicione:
 
-```html
+```
+html
 <script type="text/babel">
   function Titulo() {
     return (
@@ -176,7 +180,8 @@ Dentro da tag `<body>` do seu `index.html`, adicione:
 
 O estilo do título já está pronto no arquivo `PaginaDeLogin.css`:
 
-```css
+```
+css
 .form__titulo {
   font-size: 31px;
   font-weight: 600;
@@ -185,7 +190,8 @@ O estilo do título já está pronto no arquivo `PaginaDeLogin.css`:
 
 Atualize o componente para usar a classe CSS:
 
-```jsx
+```
+jsx
 <h1 className='form__titulo'>Login</h1>
 ```
 
@@ -197,7 +203,8 @@ Atualize o componente para usar a classe CSS:
 
 O Babel converte o JSX para JavaScript puro, permitindo que o navegador compreenda o código:
 
-```jsx
+```
+jsx
 function Titulo() {
   return (<h1 className='form__titulo'>Login</h1>);
 }
@@ -220,7 +227,7 @@ Crie um novo componente no seu projeto!
 - Um botão: “Entrar”;  
 - Um campo de texto: “Digite seu e-mail”.
 
-📢 Está com dúvidas? Use o fórum ou entre no Discord do curso para trocar ideias com outros alunos.
+📢 Está com dúvidas? trocar ideias com outros alunos.
 
 ---
 
@@ -234,6 +241,165 @@ Crie um novo componente no seu projeto!
 
 🚀 **Próximo passo:**  
 Renderizar o componente na tela e seguir com a construção da página de login do projeto **Code Connect**!
+
+
+## 🟦 Slide 15 – Renderizando Componentes na Tela
+
+Agora que criamos o componente Subtitulo como desafio, vamos aprender como renderizar os componentes React no navegador.
+
+🔍 **Problema Inicial:**
+Inserir <Subtitulo></Subtitulo> diretamente no HTML não funciona — React não interpreta isso como um componente automaticamente.
+
+✅ **Solução: Criar um ponto de montagem com ReactDOM**
+
+Devemos criar um elemento raiz onde o React irá renderizar os componentes. Adicione isso no HTML, logo após a tag <body>:
+```
+<body>
+  <div id="root"></div>
+</body>
+```
+
+⚙️ **Ligando o React ao HTML**
+
+Após declarar os componentes, use o seguinte script para renderizar o componente Titulo:
+
+```
+<script type="text/babel">
+  // Supondo que Titulo já foi definido
+
+  ReactDOM.createRoot(
+    document.getElementById('root')
+  ).render(<Titulo />);
+</script>
+```
+
+🧠 **Entenda o que está acontecendo:**
+
+| Comando                           | Função                                               |
+| --------------------------------- | ---------------------------------------------------- |
+| `document.getElementById('root')` | Seleciona o local onde o componente será renderizado |
+| `ReactDOM.createRoot(...)`        | Cria o ponto de entrada da árvore de componentes     |
+| `.render(<Titulo />)`             | Renderiza o componente especificado                  |
+
+
+🧪 **Teste no Navegador**
+
+Salve o arquivo;
+
+Recarregue a página no navegador;
+
+Agora o texto “Login” do componente Titulo deve aparecer.
+
+📌 **Pronto! O React está interligado ao HTML e seus componentes estão sendo renderizados corretamente.**
+
+## 🚀 Continuação
+
+A partir daqui, você pode:
+
+Renderizar múltiplos componentes (Titulo, Subtitulo, Formulario, etc.);
+
+Criar uma estrutura de componentes mais complexa;
+
+Iniciar a aplicação de lógica com state e eventos.
+
+## 🟦 Slide 16 – Compondo e Renderizando Múltiplos Componentes
+
+Já construímos dois componentes (Titulo e Subtitulo) e renderizamos apenas um deles na tela com ReactDOM.
+Agora, vamos aprender a renderizar múltiplos componentes ao mesmo tempo, de forma organizada.
+
+🧱 **Criando o Componente "PaginaDeLogin"**
+
+No index.html, após definir os componentes Titulo e Subtitulo, vamos criar um novo componente que irá agrupá-los:
+
+```
+<script type="text/babel">
+  function PaginaDeLogin() {
+    return (
+      <div className='container-login'>
+        <img 
+          src='./img/imagem-login.png' 
+          alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' 
+        />
+        <section>
+          <form>
+            <Titulo />
+            <Subtitulo />
+          </form>
+        </section>
+      </div>
+    )
+  }
+</script>
+```
+🧠 **O que fizemos aqui:**
+
+| Elemento                              | Função                                             |
+| ------------------------------------- | -------------------------------------------------- |
+| `<div className='container-login'>`   | Agrupa todo o conteúdo central da interface        |
+| `<img />`                             | Exibe a imagem do projeto (pessoa com computador)  |
+| `<section><form>...</form></section>` | Área do formulário de login                        |
+| `<Titulo />` e `<Subtitulo />`        | Componentes reutilizados dentro do novo componente |
+
+
+>Esse é um exemplo de composição de componentes — um componente utilizando outros.
+
+🎨 **Estilizando o componente**
+
+Verifique o arquivo PaginaDeLogin.css. Nele, a classe principal .container-login já está estilizada.
+
+No componente, usamos:
+
+```
+<div className='container-login'>
+```
+>Lembre-se de sempre utilizar className no React.
+
+🖼️ **Adicionando a imagem**
+
+A imagem usada já está no projeto, no diretório img/imagem-login.png.
+
+```
+<img 
+  src='./img/imagem-login.png' 
+  alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' 
+/>
+```
+
+🧪 **Renderizando a Página de Login**
+
+Agora, vamos exibir tudo isso na tela.
+Substituímos o componente Titulo pelo novo PaginaDeLogin dentro do método render():
+
+```
+ReactDOM.createRoot(document.getElementById('root')).render(<PaginaDeLogin />);
+```
+✅ **Resultado Esperado**
+
+Ao salvar e atualizar a página no navegador, você verá:
+
+A imagem à esquerda;
+
+O título "Login";
+
+O subtítulo abaixo;
+
+A estrutura básica da página pronta para receber os campos de formulário.
+
+>Com isso, demos um passo importante: aprendemos a montar uma interface composta por múltiplos componentes reutilizáveis.
+
+📦 **O que aprendemos**
+
+Como criar um componente que agrupa outros;
+
+Como reaproveitar componentes já existentes;
+
+Como renderizar múltiplos elementos com ReactDOM;
+
+Como estruturar melhor uma interface com React.
+
+
+
+
 
 📎 **Links Úteis**  
 👨‍🏫 Instrutor: Claudeny Avelino  
