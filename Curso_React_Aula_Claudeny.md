@@ -642,6 +642,216 @@ Podemos decidir componentizar no início do projeto ou durante o desenvolvimento
 
 A próxima aula mostrará como tornar componentes reutilizáveis com parâmetros (props).
 
+## ✅ Recapitulando rapidamente o que fizemos na Aula 20:##
+
+Estilizamos corretamente o botão Login adicionando a classe form__botao.
+
+Transformamos o componente CampoDeDigitacao em um componente reutilizável, com props como label, tipo, placeholder.
+
+Substituímos o campo de senha fixo por uma instância do componente reutilizável.
+
+Agora, vamos fechar a aula com melhorias adicionais:
+
+📌 **1. Melhorando a acessibilidade: usando id e htmlFor dinamicamente**
+
+Como os dois campos (E-mail ou usuário e Senha) estão usando o mesmo id='email' e o mesmo for='email', isso gera problemas de acessibilidade e funcionamento. Vamos corrigir isso.
+
+🔧 Ajuste no CampoDeDigitacao para receber id como prop:
+```
+function CampoDeDigitacao({ label, tipo, placeholder, id }) {
+    return (
+        <div className='form__campo-digitacao'>
+            <label htmlFor={id}>{label}</label>
+            <input 
+                type={tipo}
+                placeholder={placeholder}
+                required
+                id={id}
+            />
+        </div>
+    )
+}
+```
+
+Lembre-se: em React usamos htmlFor no lugar de for.
+
+📌**2. Atualizando a chamada dos componentes com id diferentes**
+Código atualizado da PaginaDeLogin:
+```
+function PaginaDeLogin() {
+    return (
+        <div className='container-login'>
+            <img src='./img/imagem-login.png' alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' />
+            <section>
+                <form>
+                    <Titulo />
+                    <Subtitulo />
+                    <CampoDeDigitacao 
+                        label='E-mail ou usuário'
+                        tipo='email'
+                        placeholder='Digite o seu e-mail'
+                        id='email'
+                    />
+                    <CampoDeDigitacao 
+                        label='Senha'
+                        tipo='password'
+                        placeholder='Digite a sua senha'
+                        id='senha'
+                    />
+                    <Botao />
+                </form>
+            </section>
+        </div>
+    )
+}
+```
+
+✅ **O que resolvemos com isso:**
+
+Cada campo agora tem um id único, o que evita problemas de HTML inválido.
+
+O label agora está corretamente associado ao input correspondente.
+
+O componente CampoDeDigitacao está completamente flexível e reutilizável, pronto para ser usado em qualquer lugar.
+
+🎯 **Conclusão da Aula 20**
+
+Nesta aula, você:
+
+✅ Estilizou corretamente o botão com a classe form__botao
+✅ Aprendeu a reutilizar componentes com props
+✅ Substituiu campos fixos por componentes dinâmicos
+✅ Melhorou a acessibilidade com id e htmlFor
+✅ Criou um componente CampoDeDigitacao modular e flexível
+
+
+## Aula 21 - Corrigindo Estilização do Botão e Tornando Componentes Reutilizáveis
+
+Nesta aula, vamos resolver dois pontos importantes:
+
+Corrigir a estilização do botão de login, que está sem formatação;
+
+Tornar o componente CampoDeDigitacao realmente reutilizável e dinâmico com o uso de props.
+
+✔️ **Corrigindo o Botão de Login**
+
+Vamos ao navegador visualizar o botão. Ele aparece como um pequeno quadrado cinza com o texto "Login" — sem nenhuma estilização. Isso ocorre porque esquecemos de adicionar a classe CSS ao botão.
+
+No Figma, o botão aparece grande, verde e com fonte diferente. Vamos corrigir isso.
+
+Passo 1: Encontrar a classe correta
+
+No arquivo PaginaDeLogin.css, use o atalho Ctrl+F e busque por botao. Você encontrará a seguinte classe:
+```
+.form__botao {
+  /* Estilos do botão */
+}
+```
+
+Passo 2: Adicionar a classe ao componente Botao
+
+Atualize o código do componente:
+```
+function Botao() {
+  return (
+    <button type='submit' className='form__botao'>Login</button>
+  )
+}
+```
+
+
+Salve e recarregue no navegador. Agora o botão está corretamente estilizado, igual ao Figma, com a seta à direita da palavra “Login”.
+
+🔁 **Tornando o Campo de Digitação Reutilizável**
+
+Falamos que componentes React são reutilizáveis. Vamos aplicar esse conceito no componente CampoDeDigitacao.
+
+Situação atual:
+
+Nosso componente está com texto e atributos fixos:
+```
+function CampoDeDigitacao() {
+  return (
+    <div className='form__campo-digitacao'>
+      <label for='email'>E-mail ou usuário</label>
+      <input type='email' placeholder='Digite o seu e-mail ou usuário' required id='email' />
+    </div>
+  )
+}
+```
+Objetivo:
+
+Queremos poder usar esse componente várias vezes, alterando o texto do label, o tipo de input e o placeholder de forma dinâmica.
+
+Passo 1: Passar valores dinâmicos via props
+
+Atualize a chamada do componente na PaginaDeLogin:
+```
+<CampoDeDigitacao
+  label='E-mail ou usuário'
+  tipo='email'
+  placeholder='Digite o seu e-mail ou usuário' />
+```
+Passo 2: Atualizar o componente para receber props
+```
+function CampoDeDigitacao({ label, tipo, placeholder }) {
+  return (
+    <div className='form__campo-digitacao'>
+      <label for='email'>{label}</label>
+      <input type={tipo} placeholder={placeholder} required id='email' />
+    </div>
+  )
+}
+```
+
+Mesmo salvando, a mudança visual será imperceptível, pois os valores fixos e os passados por props eram os mesmos.
+
+Testando a reutilização:
+
+Vamos remover o campo de senha antigo (um input direto) e substituí-lo pelo CampoDeDigitacao reutilizável:
+```
+<CampoDeDigitacao
+  label='Senha'
+  tipo='password'
+  placeholder='Digite a sua senha' />
+```
+Resultado final da PaginaDeLogin:
+```
+function PaginaDeLogin() {
+  return (
+    <div className='container-login'>
+      <img src='./img/imagem-login.png' alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' />
+      <section>
+        <form>
+          <Titulo />
+          <Subtitulo />
+          <CampoDeDigitacao
+            label='E-mail ou usuário'
+            tipo='email'
+            placeholder='Digite o seu e-mail ou usuário' />
+          <CampoDeDigitacao
+            label='Senha'
+            tipo='password'
+            placeholder='Digite a sua senha' />
+          <Botao />
+        </form>
+      </section>
+    </div>
+  )
+}
+```
+
+✅ **Conclusão**
+
+Corrigimos o botão de login aplicando a 
+```
+classe .form__botao;
+```
+Tornamos o componente CampoDeDigitacao reutilizável, passando valores dinâmicos como label, tipo e placeholder;
+
+Agora, nosso código está mais limpo, organizado e alinhado com os princípios do React.
+
+
 
 
 
