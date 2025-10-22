@@ -31,14 +31,24 @@
                 <h2 className='form__texto'>Boas-vindas! Faça seu login.</h2 >
             )
         }
+        function Checkbox() {
+            return (
+                //fragment
+                <>
+                    <div className='form__campo-checkbox'>
+                        <input type='checkbox' id='lembrar' />
+                        <label for='lembrar' />
+                    </div>
+                    <p className='form__opcoes-texto'>Lembrar-me</p>
+                </>
+            )
+        }
 
         function Botao() {
             return (
                 <button type='submit' className='form__botao'>Login</button>
             )
         }
-
-
         function PaginaDeLogin() {
             return (
                 <div className='container-login'>
@@ -61,19 +71,13 @@
                                     required
                                     id='senha' />
                             </div>
-                            
-                             <Botao/>
+                            <Checkbox />
+                            <Botao />
                         </form>
                     </section>
                 </div>
             )
         }
-
-
-
-
-
-
 
         ReactDOM.createRoot(document.getElementById('root')).render(<PaginaDeLogin />)
 
