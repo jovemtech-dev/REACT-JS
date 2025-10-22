@@ -1121,7 +1121,123 @@ Apesar de alterarmos a variável email, o React não está re-renderizando o com
 
 Para resolver esse problema, precisaremos usar o hook useState, que permite ao React "lembrar" e reagir às alterações de valores de forma automática na tela.
 
+## Aula 24 – Criando a seção "Lembrar-me", "Esqueci a senha" e redes sociais
 
+Nesta aula, vamos finalizar a parte inferior do formulário de login, incluindo:
+
+- O checkbox "Lembrar-me"
+- O link "Esqueci a senha"
+- E os componentes de texto e ícones de redes sociais
+
+Tudo isso respeitando boas práticas de **semântica** e **acessibilidade**.
+
+---
+
+### Ajustando o "Lembrar-me" e o "Esqueci a senha"
+
+No arquivo `index.html`, dentro da função `PaginaDeLogin()`, após o campo de senha e **antes do botão**, vamos adicionar um `fieldset`, que servirá como container semântico para essa seção.
+
+Exemplo:
+
+```jsx
+<CampoDeDigitacao 
+    label='Senha'
+    tipo='password'
+    placeholder='Digite a sua senha'
+    value={senha}
+    setValor={setSenha}
+/>
+
+<fieldset className='form__opcoes'>
+    <Checkbox />
+    <p>
+        <a href='#' aria-label='Recuperar senha esquecida'>Esqueci a senha</a>
+    </p>
+</fieldset>
+
+<Botao>Login</Botao>
+```
+Por que usar fieldset?
+O elemento fieldset é indicado quando agrupamos campos de formulários relacionados, tornando a estrutura mais clara tanto para a organização visual quanto para leitores de tela.
+
+Criando o componente Texto
+Ainda no index.html, antes da função PaginaDeLogin(), vamos criar um novo componente que será reutilizado para exibir diferentes textos no projeto:
+
+jsx
+```
+function Texto({ classe, children }) {
+    return (
+        <p className={classe}>{children}</p>
+    )
+}
+```
+Esse componente é flexível porque aceita:
+
+Uma classe CSS via a prop classe
+
+O conteúdo via a prop children
+
+Criando o componente ItemRedesSociais
+Agora vamos criar um componente para os ícones clicáveis das redes sociais.
+
+Também antes de PaginaDeLogin(), adicione:
+
+jsx
+```
+function ItemRedesSociais({ link, nome }) {
+    return (
+        <li>
+            <a href={link}>
+                <img src={`./img/${nome}.svg`} alt={`ícone do ${nome}`} />
+                {nome}
+            </a>
+        </li>
+    )
+}
+```
+Como funciona?
+link: define o destino da âncora 
+```
+<a>
+```
+
+nome: define a imagem que será exibida (github.svg, gmail.svg, etc.) e também o texto visível
+
+Usamos template strings para montar dinamicamente o caminho da imagem e o atributo alt, como:
+```
+src="./img/github.svg"
+
+alt="ícone do github"
+```
+Acessibilidade com aria-label
+No link "Esqueci a senha", usamos o atributo aria-label para descrever melhor o objetivo do link aos leitores de tela:
+
+jsx
+```
+<a href='#' aria-label='Recuperar senha esquecida'>Esqueci a senha</a>
+```
+
+Visualizando no navegador
+Após salvarmos e atualizarmos o navegador, devemos ver:
+
+O checkbox "Lembrar-me" alinhado à esquerda
+
+O link "Esqueci a senha" à direita
+
+Ambos dentro de um fieldset, respeitando a semântica HTML
+
+E, com os novos componentes Texto e ItemRedesSociais, já estamos prontos para montar a seção de login com redes sociais no próximo passo!
+
+Conclusão
+Nessa aula, aprendemos:
+
+A importância de usar fieldset para agrupar campos relacionados
+
+Como aplicar acessibilidade com aria-label
+
+A criação de componentes reutilizáveis com Texto e ItemRedesSociais
+
+Uso de props dinâmicas e template strings para tornar os componentes mais flexíveis
 
 
 📎 **Links Úteis**  
