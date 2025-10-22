@@ -1362,6 +1362,138 @@ A refinar o texto da interface, garantindo consistência com o Figma
 
 ***A interface de login agora está praticamente pronta! 🚀***
 
+***HTML***
+
+```
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/PaginaDeLogin.css" />
+    <link rel="stylesheet" href="./styles/CampoDeDigitacao.css" />
+    <title>Login | CodeConnect</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.3/babel.min.js"></script>
+
+    <script type="text/babel">
+        function Titulo() {
+            return (
+                <h1 className='form__titulo'>Login</h1>
+            )
+        }
+
+        function Subtitulo() {
+            return (
+                <h2 className='form__texto'>Boas-vindas! Faça seu login.</h2 >
+            )
+        }
+        function Checkbox() {
+            return (
+                //fragment
+                <>
+                    <div className='form__campo-checkbox'>
+                        <input type='checkbox' id='lembrar' />
+                        <label for='lembrar' />
+                    </div>
+                    <p className='form__opcoes-texto'>Lembrar-me</p>
+                </>
+            )
+        }
+        function Texto({ classe, children }) {
+            return (
+                <p className={classe}>{children}</p>
+            )
+        }
+
+        function ItemRedesSociais({ link, nome }) {
+            return (
+                <li>
+                    <a href={link}>
+                        <img src={`./img/${nome}.svg`} alt={`ícone do ${nome}`} />
+                        {nome}
+                    </a>
+                </li>
+            )
+        }
+
+        function Link({ children }) {
+            return (
+                <a href='#' className='container-links__link'>
+                    {children}
+                </a>
+            )
+        }
+
+        function Botao() {
+            return (
+                <button type='submit' className='form__botao'>Login</button>
+            )
+        }
+        function PaginaDeLogin() {
+            return (
+                <div className='container-login'>
+                    <img src='./img/imagem-login.png' alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' />
+                    <section>
+                        <form>
+                            <Titulo />
+                            <Subtitulo />
+                            <div className='form__campo-digitacao'>
+                                <label for='email'>E-mail ou usuário</label>
+                                <input type='email'
+                                    placeholder='Digite o seu e-mail ou usuário'
+                                    required
+                                    id='email' />
+                            </div>
+                            <div className='form__campo-digitacao'>
+                                <label for='senha'>Senha</label>
+                                <input type='password'
+                                    placeholder='Digite sua senha'
+                                    required
+                                    id='senha' />
+                            </div>
+                            <fieldset className='form__opcoes'>
+                                <Checkbox />
+                                <p>
+                                    <a href='#' aria-label='Recuperar senha esquecida'>Esqueci a senha</a>
+                                </p>
+                            </fieldset>
+                            <Botao />
+                        </form>
+                        <div className='container-links'>
+                            <Texto classe='container-links__titulo'>ou entre com outras contas</Texto>
+                            <ul>
+                                <ItemRedesSociais link='https://www.github.com' nome='Github' />
+                                <ItemRedesSociais link='https://www.google.com' nome='Google' />
+                            </ul>
+                            <Texto classe='container-links__texto'>Ainda não tem conta?</Texto>
+                            <Link>Crie seu cadastro!</Link>
+                        </div>
+                    </section>
+                </div>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<PaginaDeLogin />)
+
+    </script>
+
+
+</body>
+
+</html>
+
+```
 
 📎 **Links Úteis**  
 👨‍🏫 Instrutor: Claudeny Avelino  
