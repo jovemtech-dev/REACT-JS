@@ -1000,7 +1000,7 @@ Na função `PaginaDeLogin()`, vamos criar uma variável `let email` que recebe 
 jsx
 ```
 function PaginaDeLogin() {
-let email = 'moni@teste.com'
+let email = 'claudeny@teste.com'
 ```
 
     
