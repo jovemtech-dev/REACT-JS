@@ -852,6 +852,275 @@ Tornamos o componente CampoDeDigitacao reutilizável, passando valores dinâmico
 Agora, nosso código está mais limpo, organizado e alinhado com os princípios do React.
 
 
+## Aula 22 – Imprimindo textos dinâmicos com `children`
+
+Ótimo! Até aqui, já aprendemos como enviar dados dinâmicos por meio de **props** (propriedades). Mas e se quiséssemos imprimir um **texto dinâmico diretamente dentro de um componente**? É aí que entra um recurso especial do React chamado `children`.
+
+### Utilizando textos dinâmicos em componentes
+
+No nosso projeto, há vários locais onde isso pode ser útil: o **título**, o **subtítulo** e até o **botão**. Para começar, vamos transformar esses componentes para que aceitem conteúdo dinâmico entre suas tags, como fazemos com elementos HTML padrão.
+
+#### Transformando o componente `<Titulo />`
+
+Antes:
+
+```jsx
+<Titulo />
+```
+Agora, vamos reescrever essa linha, inserindo o texto diretamente entre as tags:
+
+jsx
+Copiar código
+```
+<Titulo>Login</Titulo>
+```
+Isso faz com que nosso componente de título funcione como uma tag HTML normal, como o 
+```
+<h1>Login</h1>.
+```
+Para que isso funcione, precisamos adaptar o componente Titulo para aceitar e renderizar esse conteúdo. No React, usamos a prop especial children:
+
+jsx
+Copiar código
+```
+function Titulo({ children }) {
+    return (
+        <h1 className='form__titulo'>{children}</h1>
+    )
+}
+```
+Salvando o arquivo, veremos no navegador que o texto "Login" ainda aparece, mas agora é controlado por quem chama o componente.
+
+Se mudarmos para:
+
+jsx
+Copiar código
+```
+<Titulo>Olá, estudante!</Titulo>
+```
+Veremos "Olá, estudante!" na tela. Isso mostra que o conteúdo do componente agora é dinâmico e personalizável.
+
+Vamos devolver o texto original:
+
+jsx
+Copiar código
+```
+<Titulo>Login</Titulo>
+```
+O que é children?
+children é uma palavra reservada no React. Ela representa tudo o que está dentro da tag de abertura e fechamento de um componente.
+
+Diferente das props tradicionais (como label, tipo, etc.), children permite que enviemos elementos ou textos como "filhos" do componente. Por isso, é a forma padrão de se lidar com esse tipo de conteúdo no React.
+
+Praticando com o componente 
+```
+<Subtitulo />
+```
+Agora vamos repetir o mesmo processo com o Subtitulo.
+
+Antes:
+
+jsx
+Copiar código
+```
+<Subtitulo />
+```
+Depois:
+
+jsx
+Copiar código
+```
+<Subtitulo>Boas-vindas! Faça seu login.</Subtitulo>
+```
+Agora, ajustamos a função que define o componente:
+
+jsx
+Copiar código
+```
+function Subtitulo({ children }) {
+    return (
+        <h2 className='form__texto'>{children}</h2>
+    )
+}
+```
+Pronto! O subtítulo agora também é controlado dinamicamente.
+
+Tornando o botão dinâmico com children
+Por fim, vamos aplicar a mesma ideia ao botão.
+
+Antes:
+
+jsx
+Copiar código
+```
+<Botao />
+```
+Depois:
+
+jsx
+Copiar código
+```
+<Botao>Login</Botao>
+```
+E no componente:
+
+jsx
+Copiar código
+```
+function Botao({ children }) {
+    return (
+        <button type='submit' className='form__botao'>{children}</button>
+    )
+}
+```
+Com isso, o botão pode exibir qualquer texto desejado sem precisar modificar o componente internamente.
+
+Conclusão
+Agora você aprendeu a:
+
+Usar children para tornar componentes mais reutilizáveis.
+
+Inserir textos dinâmicos diretamente entre as tags dos seus componentes.
+
+Refatorar o código para manter a semântica do HTML e a flexibilidade do React.
+
+
+## Aula 23 – Controlando o valor do input
+
+Ao lidar com formulários e campos de digitação, é essencial termos acesso ao que a pessoa usuária digita, seja para criar validações personalizadas, ou para coletar os dados e enviá-los após o envio do formulário.
+
+Uma forma de acessar esse conteúdo é criando uma **variável que receberá o valor digitado**.
+
+---
+
+### Criando a variável `email`
+
+Na função `PaginaDeLogin()`, vamos criar uma variável `let email` que recebe uma string inicial:
+
+jsx
+```
+function PaginaDeLogin() {
+let email = 'moni@teste.com'
+```
+
+    
+    
+Agora, vamos vincular essa variável ao campo de digitação. No componente CampoDeDigitacao, passaremos a propriedade 
+
+```
+value={email}:
+```
+jsx
+Copiar código
+
+```
+<CampoDeDigitacao 
+    label='E-mail ou usuário'
+    tipo='email'
+    placeholder='Digite o seu e-mail ou usuário'
+    value={email}
+/>
+```
+Preparando CampoDeDigitacao() para receber o valor
+Precisamos adaptar o componente CampoDeDigitacao() para aceitar essa prop value:
+
+jsx
+```
+function CampoDeDigitacao({ label, tipo, placeholder, value }) {
+    return (
+        <div className='form__campo-digitacao'>
+            <label for={tipo}>{label}</label>
+            <input 
+                type={tipo}
+                placeholder={placeholder}
+                required
+                id={tipo}
+                value={value}
+            />
+        </div>
+    )
+}
+```
+Agora, o valor mostrado no input será o valor fixo "claudeny@teste.com". Porém, isso ainda não é dinâmico — queremos capturar o que a pessoa usuária digitar, não um texto fixo.
+
+Criando a função substituiValorDoCampo()
+Vamos criar uma função que atualize o valor da variável sempre que o conteúdo do input for alterado:
+
+jsx
+```
+function PaginaDeLogin() {
+    let email = 'claudeny@teste.com'
+    
+    function substituiValorDoCampo(novoValor) {
+        email = novoValor;
+        console.log(email);
+    }
+   ```
+Agora, passamos essa função como prop chamada setValor para o campo:
+
+jsx
+```
+<CampoDeDigitacao 
+    label='E-mail ou usuário'
+    tipo='email'
+    placeholder='Digite o seu e-mail ou usuário'
+    value={email}
+    setValor={substituiValorDoCampo}
+/>
+```
+Ajustando CampoDeDigitacao() para tratar mudanças
+Atualizamos o componente para receber a prop setValor e aplicamos um onChange:
+
+jsx
+```
+function CampoDeDigitacao({ label, tipo, placeholder, value, setValor }) {
+    return (
+        <div className='form__campo-digitacao'>
+            <label for={tipo}>{label}</label>
+            <input 
+                type={tipo}
+                placeholder={placeholder}
+                required
+                id={tipo}
+                value={value}
+                onChange={(evento) => setValor(evento.target.value)}
+            />
+        </div>
+    )
+}
+```
+O que esse onChange faz? Ele escuta mudanças no input, e a cada alteração, chama a função setValor() com o novo valor digitado.
+
+No nosso caso, o setValor é a função substituiValorDoCampo, que imprime o novo conteúdo no console com:
+
+jsx
+```
+console.log(email)
+```
+Visualizando no navegador
+Ao testar no navegador, veremos que:
+
+O valor no input não muda visivelmente.
+
+Mas no console, cada tecla digitada aparece como um novo valor.
+
+Exemplo:
+
+Ao digitar "oi", veremos:
+
+claudeny@teste.como
+
+claudeny@teste.comi
+
+Ou seja, a função está sendo chamada e recebendo o novo valor, mas a interface não está sendo atualizada.
+
+Conclusão
+O que está acontecendo?
+
+Apesar de alterarmos a variável email, o React não está re-renderizando o componente. O React só atualiza a tela quando usamos algo chamado estado (state), que será o tema da próxima aula.
+
+Para resolver esse problema, precisaremos usar o hook useState, que permite ao React "lembrar" e reagir às alterações de valores de forma automática na tela.
+
 
 
 
