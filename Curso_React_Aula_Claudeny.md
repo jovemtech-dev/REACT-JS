@@ -1240,6 +1240,113 @@ A criação de componentes reutilizáveis com Texto e ItemRedesSociais
 Uso de props dinâmicas e template strings para tornar os componentes mais flexíveis
 
 
+# Aula 25 – Criando componentes de Link e finalizando a seção de redes sociais
+
+Nesta aula, vamos:
+
+- Criar um novo componente reutilizável de **link**
+- Utilizar os componentes `Texto`, `ItemRedesSociais` e `Link`
+- Inserir os ícones do GitHub e Google para login social
+- Corrigir pequenos detalhes de texto
+
+---
+
+## Criando o componente `Link`
+
+Após a função `ItemRedesSociais`, vamos adicionar uma nova função `Link`, que será responsável por renderizar uma âncora estilizada com a classe verde.
+
+### Código:
+
+```jsx
+function Link({ children }) {
+    return (
+        <a href='#' className='container-links__link'>
+            {children}
+        </a>
+    )
+}
+```
+Detalhes:
+A classe container-links__link pode ser encontrada no CSS em:
+
+css
+```
+/* Estilos do link */
+.container-links__link { ... }
+```
+Essa classe deixa o texto com a cor verde e remove o estilo padrão da tag ``` <a> ```.
+
+Inserindo os componentes na interface
+Vamos agora aplicar os componentes criados à interface, posicionando-os logo após o ``` <form> ``` de login.
+
+Estrutura:
+jsx
+```
+</form>
+<div className='container-links'>
+    <Texto classe='container-links__titulo'>ou entre com outras contas</Texto>
+    <ul>
+        <ItemRedesSociais link='https://www.github.com' nome='Github' />
+        <ItemRedesSociais link='https://www.google.com' nome='Google' />
+    </ul>
+    <Texto classe='container-links__texto'>Ainda não tem conta?</Texto>
+    <Link>Crie seu cadastro!</Link>
+</div>
+```
+Explicação:
+``` <Texto> ``` recebe a classe CSS e o conteúdo dinâmico com children
+
+``` <ul> ``` serve para listar as redes sociais (GitHub e Google)
+
+``` <ItemRedesSociais> ``` renderiza dinamicamente os ícones com seus nomes e links
+
+``` <Link> ``` renderiza o texto verde clicável com estilo customizado
+
+Corrigindo texto do subtítulo
+Vamos também corrigir um pequeno erro de digitação: o texto "Boas-vindas!" está sem hífen.
+
+Correção:
+Antes:
+
+jsx
+```
+<Subtitulo>Boas vindas! Faça o seu login</Subtitulo>
+```
+Depois:
+
+jsx
+```
+<Subtitulo>Boas-vindas! Faça o seu login</Subtitulo>
+```
+Desafio (Opcional)
+Repare que o link "Crie seu cadastro!" ainda está com sublinhado no navegador, mas no Figma ele aparece sem sublinhado.
+
+Desafio:
+Acesse o CSS
+
+Encontre a ``` classe .container-links__link ```
+
+Adicione a seguinte linha para remover o sublinhado:
+
+css
+Copiar código
+```
+text-decoration: none;
+```
+Conclusão
+Nesta aula, aprendemos:
+
+A criar um componente de link reutilizável com estilo verde
+
+A estruturar a área de login com redes sociais usando componentes reutilizáveis
+
+A aplicar a metodologia BEM para entender e utilizar corretamente as classes CSS
+
+A refinar o texto da interface, garantindo consistência com o Figma
+
+***A interface de login agora está praticamente pronta! 🚀***
+
+
 📎 **Links Úteis**  
 👨‍🏫 Instrutor: Claudeny Avelino  
 📁 Repositórios: [github.com/ClaudenyAvelino?tab=repositories](https://github.com/ClaudenyAvelino?tab=repositories)  
