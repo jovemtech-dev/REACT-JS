@@ -1131,6 +1131,22 @@ Nesta aula, vamos finalizar a parte inferior do formulário de login, incluindo:
 
 Tudo isso respeitando boas práticas de **semântica** e **acessibilidade**.
 
+```
+       function Checkbox() {
+            return (
+                //fragment
+                <>
+                    <div className='form__campo-checkbox'>
+                        <input type='checkbox' id='lembrar' />
+                        <label for='lembrar' />
+                    </div>
+                    <p className='form__opcoes-texto'>Lembrar-me</p>
+                </>
+            )
+        }
+
+```
+
 ---
 
 ### Ajustando o "Lembrar-me" e o "Esqueci a senha"
