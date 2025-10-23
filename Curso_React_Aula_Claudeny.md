@@ -23,7 +23,7 @@ Você aprenderá a:
 
 - Criar componentes;
 - Criar componentes dinâmicos e flexíveis;
-- Gerenciar estados (*state*);
+- Gerenciar estados (_state_);
 - Manipular eventos com React.
 
 ---
@@ -55,15 +55,14 @@ Acesse os repositórios do instrutor:
 
 ## 🟦 Slide 4 – O que é o React
 
-📘 O **React** é uma **biblioteca JavaScript** para criar interfaces de usuário web e nativas.  
+📘 O **React** é uma **biblioteca JavaScript** para criar interfaces de usuário web e nativas.
+
 > “Com o React, criamos interfaces de usuário a partir de componentes.”
 
 🔗 Saiba mais em:
 
 - [Documentação Oficial – react.dev](http://react.dev)
 - [W3Schools – React Intro](https://www.w3schools.com/react/react_intro.asp)
-
-
 
 ![Prévia da página de login do projeto Code Connect](/img/login-preview.png)
 
@@ -86,12 +85,12 @@ Essas ferramentas permitem criar e exibir componentes na tela.
 ## 🟦 Slide 6 – Instalando React e React DOM
 
 ### Instalando o React
+
 Para isso, vamos abrir a página [http://cdnjs.com/libraries/react](http://cdnjs.com/libraries/react) e copiar o primeiro link da lista da página inicial, com cor de fundo laranja.
 
 ### Instalando o React DOM
+
 Além do React, precisamos instalar outras coisas, como o **react-dom**. Para baixá-lo, acessamos a página [http://cdnjs.com/libraries/react-dom](http://cdnjs.com/libraries/react-dom).
-
-
 
 Adicione dentro da tag `<body>` do seu `index.html`:
 
@@ -108,9 +107,8 @@ html
 ## 🟦 Slide 7 – Instalando o Babel
 
 ### Instalando o Babel
-Por fim, precisamos instalar o **Babel**. Abrindo a página [http://cdnjs.com/libraries/babel-standalone](http://cdnjs.com/libraries/babel-standalone), também vamos copiar a *Script Tag* do primeiro link.
 
-
+Por fim, precisamos instalar o **Babel**. Abrindo a página [http://cdnjs.com/libraries/babel-standalone](http://cdnjs.com/libraries/babel-standalone), também vamos copiar a _Script Tag_ do primeiro link.
 
 Adicione também o Babel:
 
@@ -169,9 +167,10 @@ html
 </script>
 ```
 
-📘 **Entendendo:**  
-- `function` → define o componente;  
-- `return()` → retorna o conteúdo do componente;  
+📘 **Entendendo:**
+
+- `function` → define o componente;
+- `return()` → retorna o conteúdo do componente;
 - **JSX** → mistura de HTML + JavaScript.
 
 ---
@@ -210,9 +209,10 @@ function Titulo() {
 }
 ```
 
-🧠 **Resumo:**  
-- JSX → linguagem híbrida entre HTML e JavaScript;  
-- Babel → realiza a conversão;  
+🧠 **Resumo:**
+
+- JSX → linguagem híbrida entre HTML e JavaScript;
+- Babel → realiza a conversão;
 - React DOM → renderiza o componente na tela.
 
 ---
@@ -222,9 +222,10 @@ function Titulo() {
 💪 **Desafio:**  
 Crie um novo componente no seu projeto!
 
-**Sugestões:**  
-- Um subtítulo: “Boas-vindas! Faça seu login”;  
-- Um botão: “Entrar”;  
+**Sugestões:**
+
+- Um subtítulo: “Boas-vindas! Faça seu login”;
+- Um botão: “Entrar”;
 - Um campo de texto: “Digite seu e-mail”.
 
 📢 Está com dúvidas? trocar ideias com outros alunos.
@@ -233,15 +234,15 @@ Crie um novo componente no seu projeto!
 
 ## 🟦 Slide 14 – Conclusão
 
-✅ **O que aprendemos nesta aula:**  
-- A estrutura de um componente React;  
-- Como usar JSX;  
-- Diferença entre class e className;  
+✅ **O que aprendemos nesta aula:**
+
+- A estrutura de um componente React;
+- Como usar JSX;
+- Diferença entre class e className;
 - O papel do Babel na tradução do código.
 
 🚀 **Próximo passo:**  
 Renderizar o componente na tela e seguir com a construção da página de login do projeto **Code Connect**!
-
 
 ## 🟦 Slide 15 – Renderizando Componentes na Tela
 
@@ -253,6 +254,7 @@ Inserir <Subtitulo></Subtitulo> diretamente no HTML não funciona — React não
 ✅ **Solução: Criar um ponto de montagem com ReactDOM**
 
 Devemos criar um elemento raiz onde o React irá renderizar os componentes. Adicione isso no HTML, logo após a tag <body>:
+
 ```
 <body>
   <div id="root"></div>
@@ -280,7 +282,6 @@ Após declarar os componentes, use o seguinte script para renderizar o component
 | `document.getElementById('root')` | Seleciona o local onde o componente será renderizado |
 | `ReactDOM.createRoot(...)`        | Cria o ponto de entrada da árvore de componentes     |
 | `.render(<Titulo />)`             | Renderiza o componente especificado                  |
-
 
 🧪 **Teste no Navegador**
 
@@ -316,9 +317,9 @@ No index.html, após definir os componentes Titulo e Subtitulo, vamos criar um n
   function PaginaDeLogin() {
     return (
       <div className='container-login'>
-        <img 
-          src='./img/imagem-login.png' 
-          alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' 
+        <img
+          src='./img/imagem-login.png'
+          alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect'
         />
         <section>
           <form>
@@ -331,6 +332,7 @@ No index.html, após definir os componentes Titulo e Subtitulo, vamos criar um n
   }
 </script>
 ```
+
 🧠 **O que fizemos aqui:**
 
 | Elemento                              | Função                                             |
@@ -340,8 +342,7 @@ No index.html, após definir os componentes Titulo e Subtitulo, vamos criar um n
 | `<section><form>...</form></section>` | Área do formulário de login                        |
 | `<Titulo />` e `<Subtitulo />`        | Componentes reutilizados dentro do novo componente |
 
-
->Esse é um exemplo de composição de componentes — um componente utilizando outros.
+> Esse é um exemplo de composição de componentes — um componente utilizando outros.
 
 🎨 **Estilizando o componente**
 
@@ -352,16 +353,17 @@ No componente, usamos:
 ```
 <div className='container-login'>
 ```
->Lembre-se de sempre utilizar className no React.
+
+> Lembre-se de sempre utilizar className no React.
 
 🖼️ **Adicionando a imagem**
 
 A imagem usada já está no projeto, no diretório img/imagem-login.png.
 
 ```
-<img 
-  src='./img/imagem-login.png' 
-  alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' 
+<img
+  src='./img/imagem-login.png'
+  alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect'
 />
 ```
 
@@ -373,6 +375,7 @@ Substituímos o componente Titulo pelo novo PaginaDeLogin dentro do método rend
 ```
 ReactDOM.createRoot(document.getElementById('root')).render(<PaginaDeLogin />);
 ```
+
 ✅ **Resultado Esperado**
 
 Ao salvar e atualizar a página no navegador, você verá:
@@ -385,7 +388,7 @@ O subtítulo abaixo;
 
 A estrutura básica da página pronta para receber os campos de formulário.
 
->Com isso, demos um passo importante: aprendemos a montar uma interface composta por múltiplos componentes reutilizáveis.
+> Com isso, demos um passo importante: aprendemos a montar uma interface composta por múltiplos componentes reutilizáveis.
 
 📦 **O que aprendemos**
 
@@ -396,7 +399,6 @@ Como reaproveitar componentes já existentes;
 Como renderizar múltiplos elementos com ReactDOM;
 
 Como estruturar melhor uma interface com React.
-
 
 # 🟦 Slide 17 – Criando Campos de Entrada (Inputs)
 
@@ -418,24 +420,25 @@ Dentro do componente PaginaDeLogin, após o <Subtitulo />, criamos uma div para 
 ```
 <div className='form__campo-digitacao'>
   <label for='email'>E-mail ou usuário</label>
-  <input 
+  <input
     type='email'
     placeholder='Digite o seu e-mail ou usuário'
     required
-    id='email' 
+    id='email'
   />
 </div>
 ```
->📌 A classe form__campo-digitacao já está estilizada no arquivo CampoDeDigitacao.css
+
+> 📌 A classe form\_\_campo-digitacao já está estilizada no arquivo CampoDeDigitacao.css
 
 🔎 **O que estamos fazendo:**
-| Elemento             | Função                                                 |
+| Elemento | Função |
 | -------------------- | ------------------------------------------------------ |
-| `label for='email'`  | Cria um rótulo para o campo, associado via `id`        |
+| `label for='email'` | Cria um rótulo para o campo, associado via `id` |
 | `input type='email'` | Campo de digitação com validação automática de formato |
-| `placeholder`        | Texto auxiliar que aparece dentro do input             |
-| `required`           | Torna o campo obrigatório                              |
-| `id='email'`         | Liga o `label` ao `input`                              |
+| `placeholder` | Texto auxiliar que aparece dentro do input |
+| `required` | Torna o campo obrigatório |
+| `id='email'` | Liga o `label` ao `input` |
 
 🔐 **Adicionando o campo de senha**
 
@@ -444,16 +447,16 @@ Logo após a div do e-mail, criamos outra div com a mesma estrutura, mas com aju
 ```
 <div className='form__campo-digitacao'>
   <label for='senha'>Senha</label>
-  <input 
+  <input
     type='password'
     placeholder='Digite sua senha'
     required
-    id='senha' 
+    id='senha'
   />
 </div>
 ```
->📌 O tipo password faz com que os caracteres digitados sejam ocultados (aparecem como asteriscos).
 
+> 📌 O tipo password faz com que os caracteres digitados sejam ocultados (aparecem como asteriscos).
 
 🧠 **O que aprendemos aqui:**
 
@@ -469,9 +472,9 @@ Validações nativas: com type='email' e required, o navegador já ajuda no cont
 function PaginaDeLogin() {
   return (
     <div className='container-login'>
-      <img 
-        src='./img/imagem-login.png' 
-        alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' 
+      <img
+        src='./img/imagem-login.png'
+        alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect'
       />
       <section>
         <form>
@@ -480,21 +483,21 @@ function PaginaDeLogin() {
 
           <div className='form__campo-digitacao'>
             <label for='email'>E-mail ou usuário</label>
-            <input 
+            <input
               type='email'
               placeholder='Digite o seu e-mail ou usuário'
               required
-              id='email' 
+              id='email'
             />
           </div>
 
           <div className='form__campo-digitacao'>
             <label for='senha'>Senha</label>
-            <input 
+            <input
               type='password'
               placeholder='Digite sua senha'
               required
-              id='senha' 
+              id='senha'
             />
           </div>
         </form>
@@ -503,12 +506,13 @@ function PaginaDeLogin() {
   )
 }
 ```
+
 💬 **Spoiler da próxima aula...**
->Repare que temos duas estruturas idênticas com pequenas diferenças (label, tipo, placeholder, id).
-Será que o React tem alguma solução para evitar essa repetição?
+
+> Repare que temos duas estruturas idênticas com pequenas diferenças (label, tipo, placeholder, id).
+> Será que o React tem alguma solução para evitar essa repetição?
 
 > 🤔 Prepare-se para aprender sobre componentes reutilizáveis com props!
-
 
 ## 🟦 Slide 18 – Componentização e Reutilização com React##
 
@@ -526,11 +530,11 @@ function CampoDeDigitacao() {
   return (
     <div className='form__campo-digitacao'>
       <label for='email'>E-mail ou usuário</label>
-      <input 
+      <input
         type='email'
         placeholder='Digite o seu e-mail ou usuário'
         required
-        id='email' 
+        id='email'
       />
     </div>
   )
@@ -538,7 +542,6 @@ function CampoDeDigitacao() {
 ```
 
 ✅ **Este componente encapsula todo o bloco referente ao input de e-mail, mantendo o mesmo comportamento visual e funcional.**
-
 
 ⚙️ **Aplicando o novo componente**
 
@@ -558,11 +561,11 @@ function PaginaDeLogin() {
 
           <div className='form__campo-digitacao'>
             <label for='senha'>Senha</label>
-            <input 
+            <input
               type='password'
               placeholder='Digite sua senha'
               required
-              id='senha' 
+              id='senha'
             />
           </div>
         </form>
@@ -571,7 +574,8 @@ function PaginaDeLogin() {
   )
 }
 ```
->🧠 O campo de e-mail foi componentizado, mas o de senha ainda está fixo. Veremos mais adiante como reutilizar também com parâmetros.
+
+> 🧠 O campo de e-mail foi componentizado, mas o de senha ainda está fixo. Veremos mais adiante como reutilizar também com parâmetros.
 
 ## 🟦 Slide 19 – Criando o componente <Botao />
 
@@ -586,6 +590,7 @@ function Botao() {
   )
 }
 ```
+
 2️⃣ **Utilizando o componente:**
 
 No lugar do botão dentro do form, utilizamos:
@@ -610,11 +615,11 @@ function PaginaDeLogin() {
 
           <div className='form__campo-digitacao'>
             <label for='senha'>Senha</label>
-            <input 
+            <input
               type='password'
               placeholder='Digite sua senha'
               required
-              id='senha' 
+              id='senha'
             />
           </div>
 
@@ -629,10 +634,10 @@ function PaginaDeLogin() {
 🎯 **Conclusão**
 
 Agora temos dois novos componentes:
-| Componente             | Função                                       |
+| Componente | Função |
 | ---------------------- | -------------------------------------------- |
 | `<CampoDeDigitacao />` | Encapsula o bloco de input e label de e-mail |
-| `<Botao />`            | Encapsula o botão "Login"                    |
+| `<Botao />` | Encapsula o botão "Login" |
 
 🧠 **Reflexão**
 
@@ -644,7 +649,7 @@ A próxima aula mostrará como tornar componentes reutilizáveis com parâmetros
 
 ## ✅ Recapitulando rapidamente o que fizemos na Aula 20:##
 
-Estilizamos corretamente o botão Login adicionando a classe form__botao.
+Estilizamos corretamente o botão Login adicionando a classe form\_\_botao.
 
 Transformamos o componente CampoDeDigitacao em um componente reutilizável, com props como label, tipo, placeholder.
 
@@ -657,12 +662,13 @@ Agora, vamos fechar a aula com melhorias adicionais:
 Como os dois campos (E-mail ou usuário e Senha) estão usando o mesmo id='email' e o mesmo for='email', isso gera problemas de acessibilidade e funcionamento. Vamos corrigir isso.
 
 🔧 Ajuste no CampoDeDigitacao para receber id como prop:
+
 ```
 function CampoDeDigitacao({ label, tipo, placeholder, id }) {
     return (
         <div className='form__campo-digitacao'>
             <label htmlFor={id}>{label}</label>
-            <input 
+            <input
                 type={tipo}
                 placeholder={placeholder}
                 required
@@ -677,6 +683,7 @@ Lembre-se: em React usamos htmlFor no lugar de for.
 
 📌**2. Atualizando a chamada dos componentes com id diferentes**
 Código atualizado da PaginaDeLogin:
+
 ```
 function PaginaDeLogin() {
     return (
@@ -686,13 +693,13 @@ function PaginaDeLogin() {
                 <form>
                     <Titulo />
                     <Subtitulo />
-                    <CampoDeDigitacao 
+                    <CampoDeDigitacao
                         label='E-mail ou usuário'
                         tipo='email'
                         placeholder='Digite o seu e-mail'
                         id='email'
                     />
-                    <CampoDeDigitacao 
+                    <CampoDeDigitacao
                         label='Senha'
                         tipo='password'
                         placeholder='Digite a sua senha'
@@ -718,14 +725,13 @@ O componente CampoDeDigitacao está completamente flexível e reutilizável, pro
 
 Nesta aula, você:
 
-✅ Estilizou corretamente o botão com a classe form__botao
+✅ Estilizou corretamente o botão com a classe form\_\_botao
 ✅ Aprendeu a reutilizar componentes com props
 ✅ Substituiu campos fixos por componentes dinâmicos
 ✅ Melhorou a acessibilidade com id e htmlFor
 ✅ Criou um componente CampoDeDigitacao modular e flexível
 
-
-## Aula 21 - Corrigindo Estilização do Botão e Tornando Componentes Reutilizáveis
+## 🟦Aula 21 - Corrigindo Estilização do Botão e Tornando Componentes Reutilizáveis
 
 Nesta aula, vamos resolver dois pontos importantes:
 
@@ -742,6 +748,7 @@ No Figma, o botão aparece grande, verde e com fonte diferente. Vamos corrigir i
 Passo 1: Encontrar a classe correta
 
 No arquivo PaginaDeLogin.css, use o atalho Ctrl+F e busque por botao. Você encontrará a seguinte classe:
+
 ```
 .form__botao {
   /* Estilos do botão */
@@ -751,6 +758,7 @@ No arquivo PaginaDeLogin.css, use o atalho Ctrl+F e busque por botao. Você enco
 Passo 2: Adicionar a classe ao componente Botao
 
 Atualize o código do componente:
+
 ```
 function Botao() {
   return (
@@ -758,7 +766,6 @@ function Botao() {
   )
 }
 ```
-
 
 Salve e recarregue no navegador. Agora o botão está corretamente estilizado, igual ao Figma, com a seta à direita da palavra “Login”.
 
@@ -769,6 +776,7 @@ Falamos que componentes React são reutilizáveis. Vamos aplicar esse conceito n
 Situação atual:
 
 Nosso componente está com texto e atributos fixos:
+
 ```
 function CampoDeDigitacao() {
   return (
@@ -779,6 +787,7 @@ function CampoDeDigitacao() {
   )
 }
 ```
+
 Objetivo:
 
 Queremos poder usar esse componente várias vezes, alterando o texto do label, o tipo de input e o placeholder de forma dinâmica.
@@ -786,13 +795,16 @@ Queremos poder usar esse componente várias vezes, alterando o texto do label, o
 Passo 1: Passar valores dinâmicos via props
 
 Atualize a chamada do componente na PaginaDeLogin:
+
 ```
 <CampoDeDigitacao
   label='E-mail ou usuário'
   tipo='email'
   placeholder='Digite o seu e-mail ou usuário' />
 ```
+
 Passo 2: Atualizar o componente para receber props
+
 ```
 function CampoDeDigitacao({ label, tipo, placeholder }) {
   return (
@@ -809,13 +821,16 @@ Mesmo salvando, a mudança visual será imperceptível, pois os valores fixos e 
 Testando a reutilização:
 
 Vamos remover o campo de senha antigo (um input direto) e substituí-lo pelo CampoDeDigitacao reutilizável:
+
 ```
 <CampoDeDigitacao
   label='Senha'
   tipo='password'
   placeholder='Digite a sua senha' />
 ```
+
 Resultado final da PaginaDeLogin:
+
 ```
 function PaginaDeLogin() {
   return (
@@ -843,16 +858,17 @@ function PaginaDeLogin() {
 
 ✅ **Conclusão**
 
-Corrigimos o botão de login aplicando a 
+Corrigimos o botão de login aplicando a
+
 ```
 classe .form__botao;
 ```
+
 Tornamos o componente CampoDeDigitacao reutilizável, passando valores dinâmicos como label, tipo e placeholder;
 
 Agora, nosso código está mais limpo, organizado e alinhado com os princípios do React.
 
-
-## Aula 22 – Imprimindo textos dinâmicos com `children`
+## 🟦 Aula 22 – Imprimindo textos dinâmicos com `children`
 
 Ótimo! Até aqui, já aprendemos como enviar dados dinâmicos por meio de **props** (propriedades). Mas e se quiséssemos imprimir um **texto dinâmico diretamente dentro de um componente**? É aí que entra um recurso especial do React chamado `children`.
 
@@ -867,21 +883,27 @@ Antes:
 ```jsx
 <Titulo />
 ```
+
 Agora, vamos reescrever essa linha, inserindo o texto diretamente entre as tags:
 
 jsx
 Copiar código
+
 ```
 <Titulo>Login</Titulo>
 ```
-Isso faz com que nosso componente de título funcione como uma tag HTML normal, como o 
+
+Isso faz com que nosso componente de título funcione como uma tag HTML normal, como o
+
 ```
 <h1>Login</h1>.
 ```
+
 Para que isso funcione, precisamos adaptar o componente Titulo para aceitar e renderizar esse conteúdo. No React, usamos a prop especial children:
 
 jsx
 Copiar código
+
 ```
 function Titulo({ children }) {
     return (
@@ -889,53 +911,65 @@ function Titulo({ children }) {
     )
 }
 ```
+
 Salvando o arquivo, veremos no navegador que o texto "Login" ainda aparece, mas agora é controlado por quem chama o componente.
 
 Se mudarmos para:
 
 jsx
 Copiar código
+
 ```
 <Titulo>Olá, estudante!</Titulo>
 ```
+
 Veremos "Olá, estudante!" na tela. Isso mostra que o conteúdo do componente agora é dinâmico e personalizável.
 
 Vamos devolver o texto original:
 
 jsx
 Copiar código
+
 ```
 <Titulo>Login</Titulo>
 ```
+
 O que é children?
 children é uma palavra reservada no React. Ela representa tudo o que está dentro da tag de abertura e fechamento de um componente.
 
 Diferente das props tradicionais (como label, tipo, etc.), children permite que enviemos elementos ou textos como "filhos" do componente. Por isso, é a forma padrão de se lidar com esse tipo de conteúdo no React.
 
-Praticando com o componente 
+Praticando com o componente
+
 ```
 <Subtitulo />
 ```
+
 Agora vamos repetir o mesmo processo com o Subtitulo.
 
 Antes:
 
 jsx
 Copiar código
+
 ```
 <Subtitulo />
 ```
+
 Depois:
 
 jsx
 Copiar código
+
 ```
 <Subtitulo>Boas-vindas! Faça seu login.</Subtitulo>
 ```
+
 Agora, ajustamos a função que define o componente:
 
 jsx
 Copiar código
+
 ```
 function Subtitulo({ children }) {
     return (
@@ -943,6 +977,7 @@ function Subtitulo({ children }) {
     )
 }
 ```
+
 Pronto! O subtítulo agora também é controlado dinamicamente.
 
 Tornando o botão dinâmico com children
@@ -952,20 +987,25 @@ Antes:
 
 jsx
 Copiar código
+
 ```
 <Botao />
 ```
+
 Depois:
 
 jsx
 Copiar código
+
 ```
 <Botao>Login</Botao>
 ```
+
 E no componente:
 
 jsx
 Copiar código
+
 ```
 function Botao({ children }) {
     return (
@@ -973,6 +1013,7 @@ function Botao({ children }) {
     )
 }
 ```
+
 Com isso, o botão pode exibir qualquer texto desejado sem precisar modificar o componente internamente.
 
 Conclusão
@@ -984,8 +1025,7 @@ Inserir textos dinâmicos diretamente entre as tags dos seus componentes.
 
 Refatorar o código para manter a semântica do HTML e a flexibilidade do React.
 
-
-## Aula 23 – Controlando o valor do input
+## 🟦Aula 23 – Controlando o valor do input
 
 Ao lidar com formulários e campos de digitação, é essencial termos acesso ao que a pessoa usuária digita, seja para criar validações personalizadas, ou para coletar os dados e enviá-los após o envio do formulário.
 
@@ -998,39 +1038,41 @@ Uma forma de acessar esse conteúdo é criando uma **variável que receberá o v
 Na função `PaginaDeLogin()`, vamos criar uma variável `let email` que recebe uma string inicial:
 
 jsx
+
 ```
 function PaginaDeLogin() {
 let email = 'claudeny@teste.com'
 ```
 
-    
-    
-Agora, vamos vincular essa variável ao campo de digitação. No componente CampoDeDigitacao, passaremos a propriedade 
+Agora, vamos vincular essa variável ao campo de digitação. No componente CampoDeDigitacao, passaremos a propriedade
 
 ```
 value={email}:
 ```
+
 jsx
 Copiar código
 
 ```
-<CampoDeDigitacao 
+<CampoDeDigitacao
     label='E-mail ou usuário'
     tipo='email'
     placeholder='Digite o seu e-mail ou usuário'
     value={email}
 />
 ```
+
 Preparando CampoDeDigitacao() para receber o valor
 Precisamos adaptar o componente CampoDeDigitacao() para aceitar essa prop value:
 
 jsx
+
 ```
 function CampoDeDigitacao({ label, tipo, placeholder, value }) {
     return (
         <div className='form__campo-digitacao'>
             <label for={tipo}>{label}</label>
-            <input 
+            <input
                 type={tipo}
                 placeholder={placeholder}
                 required
@@ -1041,26 +1083,30 @@ function CampoDeDigitacao({ label, tipo, placeholder, value }) {
     )
 }
 ```
+
 Agora, o valor mostrado no input será o valor fixo "claudeny@teste.com". Porém, isso ainda não é dinâmico — queremos capturar o que a pessoa usuária digitar, não um texto fixo.
 
 Criando a função substituiValorDoCampo()
 Vamos criar uma função que atualize o valor da variável sempre que o conteúdo do input for alterado:
 
 jsx
+
 ```
 function PaginaDeLogin() {
     let email = 'claudeny@teste.com'
-    
+
     function substituiValorDoCampo(novoValor) {
         email = novoValor;
         console.log(email);
     }
-   ```
+```
+
 Agora, passamos essa função como prop chamada setValor para o campo:
 
 jsx
+
 ```
-<CampoDeDigitacao 
+<CampoDeDigitacao
     label='E-mail ou usuário'
     tipo='email'
     placeholder='Digite o seu e-mail ou usuário'
@@ -1068,16 +1114,18 @@ jsx
     setValor={substituiValorDoCampo}
 />
 ```
+
 Ajustando CampoDeDigitacao() para tratar mudanças
 Atualizamos o componente para receber a prop setValor e aplicamos um onChange:
 
 jsx
+
 ```
 function CampoDeDigitacao({ label, tipo, placeholder, value, setValor }) {
     return (
         <div className='form__campo-digitacao'>
             <label for={tipo}>{label}</label>
-            <input 
+            <input
                 type={tipo}
                 placeholder={placeholder}
                 required
@@ -1089,14 +1137,17 @@ function CampoDeDigitacao({ label, tipo, placeholder, value, setValor }) {
     )
 }
 ```
+
 O que esse onChange faz? Ele escuta mudanças no input, e a cada alteração, chama a função setValor() com o novo valor digitado.
 
 No nosso caso, o setValor é a função substituiValorDoCampo, que imprime o novo conteúdo no console com:
 
 jsx
+
 ```
 console.log(email)
 ```
+
 Visualizando no navegador
 Ao testar no navegador, veremos que:
 
@@ -1121,7 +1172,7 @@ Apesar de alterarmos a variável email, o React não está re-renderizando o com
 
 Para resolver esse problema, precisaremos usar o hook useState, que permite ao React "lembrar" e reagir às alterações de valores de forma automática na tela.
 
-## Aula 24 – Criando a seção "Lembrar-me", "Esqueci a senha" e redes sociais
+## 🟦Aula 24 – Criando a seção "Lembrar-me", "Esqueci a senha" e redes sociais
 
 Nesta aula, vamos finalizar a parte inferior do formulário de login, incluindo:
 
@@ -1156,7 +1207,7 @@ No arquivo `index.html`, dentro da função `PaginaDeLogin()`, após o campo de 
 Exemplo:
 
 ```jsx
-<CampoDeDigitacao 
+<CampoDeDigitacao
     label='Senha'
     tipo='password'
     placeholder='Digite a sua senha'
@@ -1173,6 +1224,7 @@ Exemplo:
 
 <Botao>Login</Botao>
 ```
+
 Por que usar fieldset?
 O elemento fieldset é indicado quando agrupamos campos de formulários relacionados, tornando a estrutura mais clara tanto para a organização visual quanto para leitores de tela.
 
@@ -1180,6 +1232,7 @@ Criando o componente Texto
 Ainda no index.html, antes da função PaginaDeLogin(), vamos criar um novo componente que será reutilizado para exibir diferentes textos no projeto:
 
 jsx
+
 ```
 function Texto({ classe, children }) {
     return (
@@ -1187,6 +1240,7 @@ function Texto({ classe, children }) {
     )
 }
 ```
+
 Esse componente é flexível porque aceita:
 
 Uma classe CSS via a prop classe
@@ -1199,6 +1253,7 @@ Agora vamos criar um componente para os ícones clicáveis das redes sociais.
 Também antes de PaginaDeLogin(), adicione:
 
 jsx
+
 ```
 function ItemRedesSociais({ link, nome }) {
     return (
@@ -1211,8 +1266,10 @@ function ItemRedesSociais({ link, nome }) {
     )
 }
 ```
+
 Como funciona?
-link: define o destino da âncora 
+link: define o destino da âncora
+
 ```
 <a>
 ```
@@ -1220,15 +1277,18 @@ link: define o destino da âncora
 nome: define a imagem que será exibida (github.svg, gmail.svg, etc.) e também o texto visível
 
 Usamos template strings para montar dinamicamente o caminho da imagem e o atributo alt, como:
+
 ```
 src="./img/github.svg"
 
 alt="ícone do github"
 ```
+
 Acessibilidade com aria-label
 No link "Esqueci a senha", usamos o atributo aria-label para descrever melhor o objetivo do link aos leitores de tela:
 
 jsx
+
 ```
 <a href='#' aria-label='Recuperar senha esquecida'>Esqueci a senha</a>
 ```
@@ -1255,8 +1315,7 @@ A criação de componentes reutilizáveis com Texto e ItemRedesSociais
 
 Uso de props dinâmicas e template strings para tornar os componentes mais flexíveis
 
-
-# Aula 25 – Criando componentes de Link e finalizando a seção de redes sociais
+## 🟦Aula 25 – Criando componentes de Link e finalizando a seção de redes sociais
 
 Nesta aula, vamos:
 
@@ -1275,28 +1334,32 @@ Após a função `ItemRedesSociais`, vamos adicionar uma nova função `Link`, q
 
 ```jsx
 function Link({ children }) {
-    return (
-        <a href='#' className='container-links__link'>
-            {children}
-        </a>
-    )
+  return (
+    <a href="#" className="container-links__link">
+      {children}
+    </a>
+  );
 }
 ```
+
 Detalhes:
-A classe container-links__link pode ser encontrada no CSS em:
+A classe container-links\_\_link pode ser encontrada no CSS em:
 
 css
+
 ```
 /* Estilos do link */
 .container-links__link { ... }
 ```
-Essa classe deixa o texto com a cor verde e remove o estilo padrão da tag ``` <a> ```.
+
+Essa classe deixa o texto com a cor verde e remove o estilo padrão da tag `<a>`.
 
 Inserindo os componentes na interface
-Vamos agora aplicar os componentes criados à interface, posicionando-os logo após o ``` <form> ``` de login.
+Vamos agora aplicar os componentes criados à interface, posicionando-os logo após o `<form>` de login.
 
 Estrutura:
 jsx
+
 ```
 </form>
 <div className='container-links'>
@@ -1309,14 +1372,15 @@ jsx
     <Link>Crie seu cadastro!</Link>
 </div>
 ```
+
 Explicação:
-``` <Texto> ``` recebe a classe CSS e o conteúdo dinâmico com children
+`<Texto>` recebe a classe CSS e o conteúdo dinâmico com children
 
-``` <ul> ``` serve para listar as redes sociais (GitHub e Google)
+`<ul>` serve para listar as redes sociais (GitHub e Google)
 
-``` <ItemRedesSociais> ``` renderiza dinamicamente os ícones com seus nomes e links
+`<ItemRedesSociais>` renderiza dinamicamente os ícones com seus nomes e links
 
-``` <Link> ``` renderiza o texto verde clicável com estilo customizado
+`<Link>` renderiza o texto verde clicável com estilo customizado
 
 Corrigindo texto do subtítulo
 Vamos também corrigir um pequeno erro de digitação: o texto "Boas-vindas!" está sem hífen.
@@ -1325,30 +1389,36 @@ Correção:
 Antes:
 
 jsx
+
 ```
 <Subtitulo>Boas vindas! Faça o seu login</Subtitulo>
 ```
+
 Depois:
 
 jsx
+
 ```
 <Subtitulo>Boas-vindas! Faça o seu login</Subtitulo>
 ```
+
 Desafio (Opcional)
 Repare que o link "Crie seu cadastro!" ainda está com sublinhado no navegador, mas no Figma ele aparece sem sublinhado.
 
 Desafio:
 Acesse o CSS
 
-Encontre a ``` classe .container-links__link ```
+Encontre a `classe .container-links__link`
 
 Adicione a seguinte linha para remover o sublinhado:
 
 css
 Copiar código
+
 ```
 text-decoration: none;
 ```
+
 Conclusão
 Nesta aula, aprendemos:
 
@@ -1360,9 +1430,9 @@ A aplicar a metodologia BEM para entender e utilizar corretamente as classes CSS
 
 A refinar o texto da interface, garantindo consistência com o Figma
 
-***A interface de login agora está praticamente pronta! 🚀***
+**_A interface de login agora está praticamente pronta! 🚀_**
 
-***HTML***
+**_HTML_**
 
 ```
 <!DOCTYPE html>
