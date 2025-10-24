@@ -1,4 +1,4 @@
-![TESTE](img/n21Gypa.png)
+![TESTE](img/capa.png)
 
 # CodeConnect
 
