@@ -53,6 +53,94 @@ npm create vite@latest codeconnect -- --template react
 
 ```
 
+```
+Em seguida.
+> npx
+> create-vite codeconnect react
+
+│
+◆  Select a framework:
+│  ○ Vanilla
+│  ○ Vue
+│  ● React
+│  ○ Preact
+│  ○ Lit
+│  ○ Svelte
+│  ○ Solid
+│  ○ Qwik
+│  ○ Angular
+│  ○ Marko
+│  ○ Others
+
+```
+
+Em seguida.
+
+```
+> npx
+> create-vite codeconnect react
+
+│
+◇  Select a framework:
+│  React
+│
+◆  Select a variant:
+│  ○ TypeScript
+│  ○ TypeScript + React Compiler
+│  ○ TypeScript + SWC
+│  ● JavaScript
+│  ○ JavaScript + React Compiler
+│  ○ JavaScript + SWC
+│  ○ React Router v7 ↗
+│  ○ TanStack Router ↗
+│  ○ RedwoodSDK ↗
+│  ○ RSC ↗
+
+```
+
+```
+> npx
+> create-vite codeconnect react
+
+│
+◇  Select a framework:
+│  React
+│
+◇  Select a variant:
+│  JavaScript
+│
+◆  Use rolldown-vite (Experimental)?:
+│  ○ Yes
+│  ● No
+```
+
+```
+> npx
+> create-vite codeconnect react
+
+│
+◇  Select a framework:
+│  React
+│
+◇  Select a variant:
+│  JavaScript
+│
+◇  Use rolldown-vite (Experimental)?:
+│  No
+│
+◆  Install with npm and start now?
+│  ● Yes / ○ No
+
+```
+
+```
+  VITE v7.1.12  ready in 456 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+```
+
 **Explicação:**
 
 npm create vite@latest → cria o projeto usando a versão mais recente do Vite
@@ -135,6 +223,7 @@ Com poucos comandos, você já tem um ambiente de desenvolvimento pronto, modern
 
 📚 **_Créditos_**
 
-Projeto desenvolvido para fins educacionais na turma JOVEM-TECH-TC-REACT-JS
-Professor: Claudeny Avelino
-E-mail: claudeny.avelino@gmail.com
+- Projeto desenvolvido para fins educacionais na turma
+- JOVEM-TECH-TC-REACT-JS
+- Professor: Claudeny Avelino
+- E-mail: claudeny.avelino@gmail.com
