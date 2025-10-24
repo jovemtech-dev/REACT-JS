@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/PaginaDeLogin.css">
+    <link rel="stylesheet" href="/styles/CampoDeDigitacao.css">
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.3/babel.min.js"></script>
+
+
+    <script type="text/babel">
+
+        function Titulo() {
+            return (
+                <img className="logo-seenema"
+                    src="/img/LogoSEEnema.png"
+                    alt="seenema logo"
+                />
+            )
+        }
+
+        function SubTitulo() {
+            return (
+                <h2 className="form__texto">Faça seu login!</h2>
+            )
+        }
+
+        function CampoDeDigitacao() {
+            return (
+                <div className="form__campo-digitacao">
+                    <label for="email">Email ou Usuário</label>
+                    <input type="email" placeholder="Digite seu e-mail ou usuário" required id="email" />
+                </div>
+            )
+        }
+
+        function CampoDeDigitacao_2() {
+            return (
+                <div className="form__campo-digitacao">
+                    <label for="senha">Email ou Usuário</label>
+                    <input type="password" placeholder="Digite sua senha" required id="senha" />
+                </div>
+            )
+        }
+
+        function Botao() {
+            return (
+                <button href="home.html" type="submit" className="form__botao">Login </button>
+
+
+
+            )
+        }
+
+
+        function MeuComponente() {
+            return (
+                // 2. Use o componente Link e a propriedade 'to' para definir o destino
+                <Link to="/outra-pagina">
+                    Ir para outra página
+                </Link>
+            );
+        }
+
+        function Checkbox() {
+            return (
+                <>
+                    <div className="form__campo-checkbox">
+                        <label for="checkbox"></label>
+                        <input type="checkbox" id="checkbox" />
+                    </div>
+                    <p className="form__opcoes-texto"> Lembrar-me</p>
+                </>
+            )
+        }
+
+        function EsqueceuSenha() {
+            return (
+                <a href=""> Esqueceu a senha?</a>
+            )
+        }
+
+        function PaginaLogin() {
+            return (
+
+                <div className="container-login">
+                    <img className="imagem-misa" src="img\Gemini_Generated_Image_lzw3y2lzw3y2lzw3.png" alt="um homem de terno roxo" />
+                    <section>
+                        <Titulo />
+
+                        <form>
+                            <SubTitulo />
+
+                            <div className="form__campo-digitacao">
+                                <CampoDeDigitacao />
+                                <CampoDeDigitacao_2 />
+                            </div>
+
+                            <fieldset className="form__opcoes">
+                                <Checkbox />
+                                <EsqueceuSenha />
+                            </fieldset>
+                            <Botao />
+                        </form>
+                    </section>
+
+
+
+                </div>
+            )
+        }
+
+
+        ReactDOM.createRoot(
+            document.getElementById("root")
+        ).render(<PaginaLogin />)
+
+    </script>
+
+
+</body>
+
+</html>
