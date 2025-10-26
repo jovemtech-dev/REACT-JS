@@ -33,6 +33,17 @@ Antes de começar, verifique se você possui instalado:
 - **Node.js 18 ou superior**
 - **npm (Node Package Manager)**
 - Um editor de código (recomendado: **Visual Studio Code**)
+***OBS:***
+
+```
+node -v
+
+nmp -v
+```
+Para corrigir erro
+```
+npm install -g npm@8.15.0
+```
 
 ---
 
