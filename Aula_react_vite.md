@@ -658,6 +658,136 @@ Crie um arquivo Sidebar.css e estilize o componente — adicionando espaçamento
 
 
 
+# Finalizando o Componente Sidebar
+
+## Sumário
+1. [Introdução](#introdução)
+2. [Adicionando Novos Itens ao Menu](#adicionando-novos-itens-ao-menu)
+3. [Código Completo do Sidebar](#código-completo-do-sidebar)
+4. [Explicando o Código](#explicando-o-código)
+5. [Organização dos Arquivos](#organização-dos-arquivos)
+6. [Conclusão](#conclusão)
+7. [Créditos do Projeto](#créditos-do-projeto)
+
+---
+
+## Introdução
+
+Até agora, construímos o **componente Sidebar** com o logo do CodeConnect, o botão **Publicar** e o primeiro link do menu — o **Feed**.
+
+Nesta parte da aula, vamos adicionar os **demais itens de navegação** conforme o layout do **Figma**, finalizando a estrutura do componente.
+
+---
+
+## Adicionando Novos Itens ao Menu
+
+Os novos itens que serão adicionados são:
+
+- **Perfil** (`Account.svg`)  
+- **Sobre nós** (`Info.svg`)  
+- **Sair** (`Logout.svg`)
+
+Esses ícones devem estar dentro da pasta:
+```
+import Feed from './assets/feed.svg';
+import Account from './assets/account_circle.svg';
+import Info from './assets/info.svg';
+import Logout from './assets/logout.svg';
+```
+
+## Implementando os Links de Navegação
+
+Chegou a hora de dar continuidade na criação do componente **Sidebar**. O foco desta etapa é implementar os **links de navegação** na barra lateral, cada um contendo um **ícone** e um **texto correspondente**.
+
+### Opinião do Instrutor
+
+Cada item do menu de links de navegação é composto por:
+
+- Um link (`<a>`) com o atributo `href`
+- Um ícone (`<img>`) importado e atribuído a um nome
+- Um texto (`<span>`) indicando a função do link
+
+Para importar os ícones, utilizamos a seguinte sintaxe:
+
+```
+javascript
+import Feed from './assets/feed.svg';
+import Account from './assets/account_circle.svg';
+import Info from './assets/info.svg';
+import Logout from './assets/logout.svg';
+```
+
+>💡 Dica: Certifique-se de que os nomes dos arquivos SVG estejam corretos e respeitem maiúsculas e minúsculas.
+
+Criando os Itens do Menu
+
+Cada item de navegação é representado por uma <li>, que contém:
+
+Um ` <a href='#'> `
+
+Uma `<img>` apontando para o ícone
+
+Um `<span>` com o texto do link
+
+O resultado final dos itens adicionais é:
+```
+<li>
+    <a href='#'>
+        <img src={Account} alt='' />
+        <span>Perfil</span>
+    </a>
+</li>
+<li>
+    <a href='#'>
+        <img src={Info} alt='' />
+        <span>Sobre nós</span>
+    </a>
+</li>
+<li>
+    <a href='#'>
+        <img src={Logout} alt='' />
+        <span>Sair</span>
+    </a>
+</li>
+```
+
+**Observações Importantes**
+
+O `alt=''` é deixado vazio para evitar redundância na leitura por leitores de tela, já que o texto do `<span>` descreve o link.
+
+A importação dos ícones deve ser feita antes do `export default function Sidebar().`
+
+Os links adicionados (Perfil, Sobre nós, Sair) seguem o mesmo padrão do link Feed já implementado anteriormente.
+
+Com isso, finalizamos a implementação de todos os links de navegação do Sidebar. O próximo passo será estilizar a barra lateral para que fique visualmente igual ao design no Figma.
+
+```
+                    <li>
+                        <a href='#'>
+                            <img src={Account} alt='' />
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <img src={Info} alt='' />
+                            <span>Sobre nós</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <img src={Logout} alt='' />
+                            <span>Sair</span>
+                        </a>
+                    </li>
+
+```
+
+
+
+
+
+
 
 ## 📚 **_Créditos_**
 
