@@ -389,6 +389,274 @@ src	Contém todo o código-fonte e a lógica do projeto
 Nos próximos passos, você explorará os arquivos dentro da pasta src e entenderá como o React estrutura os componentes e renderiza as interfaces.
 
 
+# Entendendo os Arquivos do Projeto React com Vite
+
+## Sumário
+1. [Introdução](#introdução)
+2. [Arquivos Dentro da Pasta src](#arquivos-dentro-da-pasta-src)
+3. [O Componente Principal App.jsx](#o-componente-principal-appjsx)
+4. [Arquivo de Estilo App.css](#arquivo-de-estilo-appcss)
+5. [Arquivo main.jsx](#arquivo-mainjsx)
+6. [Arquivo index.css](#arquivo-indexcss)
+7. [Criando um Novo Componente](#criando-um-novo-componente)
+8. [Conclusão](#conclusão)
+9. [Créditos do Projeto](#créditos-do-projeto)
+
+---
+
+## Introdução
+
+Agora que já nos familiarizamos com as pastas do projeto, vamos entender **o que é cada arquivo dentro** delas.
+
+O foco desta aula é explorar os principais arquivos dentro da pasta `src`, que é onde colocamos todo o código que compõe o nosso projeto — seja lógica ou conteúdo visual.
+
+---
+
+## Arquivos Dentro da Pasta src
+
+Dentro da pasta `src`, encontramos inicialmente uma subpasta chamada **assets**.  
+Nela, há uma imagem chamada `react.svg`.
+
+A lógica da pasta `assets` é semelhante à da pasta `public`: podemos colocar **imagens, códigos e outros recursos**.  
+A principal diferença entre as duas pastas depende do **contexto da aplicação** — e essa diferença será explicada na seção “Para saber mais”.
+
+---
+
+## O Componente Principal App.jsx
+
+Após a pasta `assets`, encontramos os arquivos `App.jsx` e `App.css`.
+
+O arquivo **`App.jsx`** é uma **função que retorna elementos HTML** — isso significa que ele é um **componente React**.
+
+Quando uma função retorna elementos HTML, dizemos que ela é um **componente JSX** (`.jsx` = JavaScript XML).  
+Ele é o **componente principal** da aplicação, ou seja, tudo que queremos imprimir na primeira renderização do site estará dentro dele.
+
+No código, podemos observar que:
+
+- A partir da **linha 9**, temos o `return`, que contém o conteúdo exibido na tela (links, imagens, etc.).
+- Dentro do `return`, há dois logos (do **Vite** e do **React**).
+- Por volta da **linha 21**, há um contador interativo, visível ao abrir o servidor local.
+
+Esses elementos são justamente o que vimos quando executamos o projeto no navegador.
+
+---
+
+## Arquivo de Estilo App.css
+
+O arquivo **`App.css`** contém os **estilos aplicados ao componente `App.jsx`**.
+
+Nele, encontramos:
+- Tamanhos predefinidos para imagens;
+- Sombras nos elementos;
+- Cores e espaçamentos.
+
+Tudo o que estiliza o que é retornado dentro do `App.jsx` está definido no `App.css`.
+
+---
+
+## Arquivo main.jsx
+
+O arquivo **`main.jsx`** é o **ponto de entrada da aplicação React**.  
+Sua função é **definir a renderização** dos componentes dentro da estrutura HTML do projeto.
+
+O `main.jsx` cria uma **raiz** em um elemento com o `id="root"` no arquivo HTML principal.  
+Dentro dessa raiz, ele **renderiza o componente principal (`App`)**.
+
+Por exemplo, no código:
+
+```
+jsx
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+```
+
+# Criando o Componente Sidebar no Projeto React
+
+## Sumário
+1. [Introdução](#introdução)
+2. [Estrutura Inicial do Componente](#estrutura-inicial-do-componente)
+3. [Importando e Utilizando Imagens](#importando-e-utilizando-imagens)
+4. [Adicionando o Botão Publicar](#adicionando-o-botão-publicar)
+5. [Adicionando os Itens do Menu](#adicionando-os-itens-do-menu)
+6. [Boas Práticas com Imagens SVG](#boas-práticas-com-imagens-svg)
+7. [Desafio Final](#desafio-final)
+8. [Créditos do Projeto](#créditos-do-projeto)
+
+---
+
+## Introdução
+
+Agora que sabemos onde os componentes serão construídos, é hora de entender **como criar um componente em React**.
+
+Nesta aula, vamos criar o componente **Sidebar**, responsável pelo **menu lateral** da nossa aplicação.
+
+---
+
+## Estrutura Inicial do Componente
+
+Dentro da pasta do projeto, siga o caminho:
+
+>src > components > Sidebar > index.jsx
+
+
+No arquivo `index.jsx`, começamos com a definição da função do componente:
+
+```
+jsx
+export default function Sidebar() {
+    return();
+}
+```
+Esse trecho define um Function Component — ou Componente de Função.
+Nele:
+
+* Utilizamos a palavra reservada function para declarar a função.
+
+* Damos o nome ao componente (Sidebar).
+
+* Usamos export default para exportar o componente por padrão.
+
+* Dentro da função, temos um return(), que indica o conteúdo a ser exibido na tela.
+
+Todos os componentes que criarmos seguirão essa mesma estrutura.
+
+**Importando e Utilizando Imagens**
+
+No Figma, podemos visualizar o design do nosso projeto.
+O Sidebar é uma barra de menu lateral que contém:
+
+O logo do CodeConnect
+
+Um botão de publicar
+
+E uma lista de links, cada um com um ícone e um nome.
+
+## 🔽 Baixando as imagens do Figma
+
+Clique sobre uma imagem (ex: Logo) até ela ficar isolada no menu à esquerda.
+
+Vá até o menu à direita e clique na aba Export.
+
+Clique no botão + e altere o formato para SVG.
+
+Clique em Export para baixar.
+
+Repita para as outras imagens.
+
+>💡 Por que SVG?
+Porque é o formato ideal para ícones e gráficos vetoriais — permite redimensionar sem perder qualidade.
+
+**🗂️ Organizando as imagens**
+
+Mova as imagens baixadas da pasta de downloads para dentro do seu projeto:
+```
+src > components > Sidebar > assets
+```
+
+Essa pasta assets conterá apenas as imagens usadas dentro da Sidebar.
+
+Adicionando o Logo
+
+No index.jsx, vamos importar o arquivo da logo e exibi-lo no HTML:
+```
+import Logo from './assets/Logo.svg';
+
+export default function Sidebar() {
+    return(
+        <aside>
+            <img src={Logo} alt='Logo do CodeConnect' />
+        </aside>
+    );
+}
+```
+
+**🧠 Explicando:**
+
+* import Logo from './assets/Logo.svg' → Importa a imagem e atribui a ela o nome Logo.
+
+* <img src={Logo} /> → Exibe a imagem no componente.
+
+* alt='Logo do CodeConnect' → Texto alternativo, usado para acessibilidade.
+>Essa é a forma recomendada de importar imagens em React, permitindo o uso dinâmico de arquivos no JSX.
+
+
+**Adicionando o Botão Publicar**
+
+O próximo elemento no Figma é o botão “Publicar”, que faz parte do menu lateral.
+Vamos adicionar ele dentro de um <nav> (menu de navegação).
+
+Atualize seu index.jsx:
+```
+import Logo from './assets/Logo.svg';
+
+export default function Sidebar() {
+    return(
+        <aside>
+            <img src={Logo} alt='Logo do CodeConnect' />
+            <nav>
+                <ul>
+                    <li>
+                        <a href='#'>Publicar</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    );
+}
+```
+>✅ Agora o Sidebar já contém o logo e o botão de publicação!
+
+**Adicionando os Itens do Menu**
+
+Em seguida, vamos adicionar os outros links de navegação, começando pelo Feed.
+
+Primeiro, importe o ícone do feed logo abaixo da importação da logo:
+
+```import Logo from './assets/Logo.svg';
+import Feed from './assets/feed.svg';
+
+export default function Sidebar() {
+    return(
+        <aside>
+            <img src={Logo} alt='Logo do CodeConnect' />
+            <nav>
+                <ul>
+                    <li>
+                        <a href='#'>Publicar</a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <img src={Feed} alt='' />
+                            <span>Feed</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    );
+}
+```
+
+**💬 Observações importantes:**
+
+**Desafio Final**
+
+Crie os outros itens da lista dentro da tag <ul> seguindo o mesmo padrão:
+```
+<li>
+  <a href='#'>
+    <img src={Icone} alt='' />
+    <span>Nome do Item</span>
+  </a>
+</li>
+```
+✨ Dica:
+Crie um arquivo Sidebar.css e estilize o componente — adicionando espaçamentos, cores, fontes e tamanhos dos ícones.
+
+
 
 
 ## 📚 **_Créditos_**
