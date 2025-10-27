@@ -232,6 +232,8 @@ Com poucos comandos, você já tem um ambiente de desenvolvimento pronto, modern
 
 > 💬 Próximo passo: explorar a estrutura de pastas e entender o que o Vite cria automaticamente.
 
+![Pototipo ](./img/prototipo.png)
+
 
 # Estrutura de Pastas no Projeto React com Vite
 
@@ -719,7 +721,7 @@ import Logout from './assets/logout.svg';
 
 >💡 Dica: Certifique-se de que os nomes dos arquivos SVG estejam corretos e respeitem maiúsculas e minúsculas.
 
-Criando os Itens do Menu
+**Criando os Itens do Menu**
 
 Cada item de navegação é representado por uma <li>, que contém:
 
@@ -751,7 +753,7 @@ O resultado final dos itens adicionais é:
 </li>
 ```
 
-**Observações Importantes**
+## Observações Importantes
 
 O `alt=''` é deixado vazio para evitar redundância na leitura por leitores de tela, já que o texto do `<span>` descreve o link.
 
