@@ -232,9 +232,6 @@ Com poucos comandos, você já tem um ambiente de desenvolvimento pronto, modern
 
 > 💬 Próximo passo: explorar a estrutura de pastas e entender o que o Vite cria automaticamente.
 
-![Pototipo ](./img/prototipo.png)
-
-
 # Estrutura de Pastas no Projeto React com Vite
 
 ## Sumário
@@ -537,6 +534,19 @@ Um botão de publicar
 E uma lista de links, cada um com um ícone e um nome.
 
 ## 🔽 Baixando as imagens do Figma
+
+---
+**Prototipo**
+
+![Pototipo ](./img/prototipo.png)
+
+---
+---
+
+
+[Baixe aqui: Imagens assets](https://1drv.ms/f/c/08a6d1d355a14254/EuTDnLjXCY5HqJv1raU0xvIByA8vu2mnlUn38OQNE_hntw?e=eQg9pH)
+
+---
 
 Clique sobre uma imagem (ex: Logo) até ela ficar isolada no menu à esquerda.
 
