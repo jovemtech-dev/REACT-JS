@@ -653,7 +653,7 @@ Crie os outros itens da lista dentro da tag <ul> seguindo o mesmo padrão:
   </a>
 </li>
 ```
-✨ Dica:
+>✨ Dica:
 Crie um arquivo Sidebar.css e estilize o componente — adicionando espaçamentos, cores, fontes e tamanhos dos ícones.
 
 
