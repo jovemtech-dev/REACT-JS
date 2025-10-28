@@ -958,7 +958,7 @@ Passo a passo:
 
 Acesse Google Fonts
 
-[Acesse aqui fonts.google.com]([](https://cursos.alura.com.br/course/react-configurando-estruturando-projetos-vite/task/fonts.google.com))
+[Acesse aqui google.com]([](https://fonts.google.com/))
 
 Pesquise por Prompt
 
