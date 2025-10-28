@@ -794,6 +794,228 @@ Com isso, finalizamos a implementação de todos os links de navegação do Side
                     </li>
 
 ```
+# 🧩 Finalizando o Componente Sidebar
+
+## 📚 Sumário
+- [Introdução](#introdução)
+- [Importação das Imagens](#importação-das-imagens)
+- [Implementação do Sidebar](#implementação-do-sidebar)
+- [Limpando-o-appjsx](#limpando-o-appjsx)
+- [Renderizando-o-Componente-Sidebar](#renderizando-o-componente-sidebar)
+- [Executando-o-Servidor-Local](#executando-o-servidor-local)
+- [Removendo-Estilizações-Padrão](#removendo-estilizações-padrão)
+- [Importando-a-Fonte-no-Projeto](#importando-a-fonte-no-projeto)
+- [Criando-Variáveis-de-Cores-e-Fonte](#criando-variáveis-de-cores-e-fonte)
+- [Conclusão](#conclusão)
+- [Créditos](#créditos)
+
+---
+
+## 🧠 Introdução
+
+Vamos comparar os resultados do desafio!  
+Finalizamos a importação das imagens no nosso `index.jsx`.  
+
+Eu nomeei como **Account**, **Info** e **Logout**, mas vocês não precisam usar exatamente os mesmos nomes — o importante é que o diretório e o caminho estejam corretos conforme o projeto.  
+
+Depois, inserimos essas imagens em itens da lista, dentro de âncoras (`<a>`) e da tag `<img>`, acompanhadas por um `<span>` com o texto do link.
+
+---
+
+## 🖼️ Importação das Imagens
+
+```
+jsx
+import Logo from './assets/Logo.svg';
+import Feed from './assets/feed.svg';
+import Account from './assets/account_circle.svg';
+import Info from './assets/info.svg';
+import Logout from './assets/logout.svg';
+```
+
+🧱 Implementação do Sidebar
+```
+export default function Sidebar() {
+    return (
+        <aside>
+            <img src={Logo} alt='Logo do CodeConnect' />
+            <nav>
+                <ul>
+                    <li>
+                        <a href='#'>Publicar</a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <img src={Feed} alt='' />
+                            <span>Feed</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <img src={Account} alt='' />
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <img src={Info} alt='' />
+                            <span>Sobre nós</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <img src={Logout} alt='' />
+                            <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    )
+}
+```
+Com isso, conseguimos construir o nosso Sidebar completo!
+Mas ainda não mostramos nada na tela. Para isso, precisamos editar o `App.jsx.`
+
+🧹 Limpando o App.jsx
+
+No arquivo `App.jsx`, apagaremos todo o conteúdo dentro do `return()`.
+
+O código ficará assim:
+``` 
+import './App.css'
+
+function App() {
+  return (
+
+  )
+}
+
+export default App
+```
+⚙️ Renderizando o Componente Sidebar
+
+Com o arquivo limpo, dentro do return() inseriremos o nosso componente Sidebar:
+```
+import './App.css'
+import Sidebar from './componentes/Sidebar'
+
+function App() {
+  return (
+    <Sidebar />
+  )
+}
+
+export default App
+```
+💡 Dica:
+Se o VS Code não sugerir automaticamente a importação, clique em Sidebar e pressione Ctrl + Espaço para forçar a autoimportação.
+
+🖥️ Executando o Servidor Local
+
+Para visualizar o resultado no navegador, precisamos iniciar o servidor local com o comando:
+```
+npm run dev
+```
+Se o terminal anterior ainda estiver aberto, basta acessar o link que aparece, normalmente:
+```
+http://127.0.0.1:5173
+```
+Se o terminal estiver fechado:
+
+No VS Code, clique em Terminal > New Terminal,
+ou use o atalho Ctrl + Shift + '
+```
+Digite: npm run dev
+```
+Pressione Enter.
+
+Após isso, copie o link exibido e cole no navegador.
+
+Agora o Sidebar será renderizado corretamente — mas ainda com estilos padrão do navegador.
+
+🎨 Removendo Estilizações Padrão
+
+Vamos limpar as estilizações padrão do Vite:
+
+Abra o arquivo App.css
+
+Selecione todo o código (Ctrl + A)
+
+Apague tudo e salve.
+
+Depois, faça o mesmo com o arquivo index.css.
+
+Agora, ao atualizar o navegador, teremos a aparência básica do HTML:
+fundo branco, links azuis e listas com marcadores padrão.
+
+✍️ Importando a Fonte no Projeto
+
+Para aplicar a fonte correta, vamos consultar o Figma, na seção Guia de Estilos.
+A fonte utilizada é Prompt, com os pesos 400 (Regular) e 500 (Medium).
+
+Passo a passo:
+
+Acesse Google Fonts
+
+Pesquise por Prompt
+
+Selecione Regular 400 e Medium 500
+
+Copie o trecho de código `<link> `gerado em Selected Family
+
+Cole o código dentro do `<head>`do seu index.html, logo após a tag `<meta>`:
+
+```
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500&display=swap" rel="stylesheet">
+  <title>Vite + React</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
+```
+>Agora a fonte Prompt está importada com sucesso no projeto.
+
+🌈 Criando Variáveis de Cores e Fonte
+
+No Figma, na seção Guia de Estilos, temos também as cores do projeto.
+Por exemplo, o Verde destaque possui o valor hexadecimal `#81FE88`.
+
+No VS Code, abra o arquivo `index.css` e adicione as variáveis dentro do `:root {}:`
+```
+:root {
+    --verde-destaque: #81FE88;
+    --fonte: 'Prompt', sans-serif;
+}
+```
+💡 Dica:
+Se tiver dúvida sobre como adicionar famílias de fontes, consulte a área Selected Family do Google Fonts — lá aparece o formato correto para o CSS.
+✅ Conclusão
+
+Agora temos:
+
+O Sidebar funcional e renderizado
+
+A fonte personalizada Prompt importada
+
+E as variáveis de cor e fonte definidas no CSS
+
+No próximo passo, começaremos a estilização do componente!
+
+
 
 
 
