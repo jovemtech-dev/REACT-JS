@@ -1271,7 +1271,240 @@ Com sucesso, construímos e estilizamos nosso primeiro componente! 🎉
 Podemos continuar com o restante do projeto.
 
 
+# 🔍 Construindo a Barra de Pesquisa
 
+## 🧱 Criando a Estrutura do Componente
+
+Para construir a barra de pesquisa, usaremos o **Visual Studio Code**.  
+Primeiro, **feche todas as abas** para reduzir a informação na tela.
+
+No explorador de arquivos, à esquerda, dentro da pasta `componentes`, **criaremos uma nova pasta** denominada `BarraDePesquisa`.
+
+📁 Estrutura esperada:
+
+>💡 Lembre-se: essa estrutura de função será repetida sempre que criarmos novos componentes.
+
+🧩 Adicionando o Elemento Input
+
+Vamos construir o conteúdo visual dentro do `return`.
+Neste caso, será um campo de pesquisa `(input)`.
+
+```
+export default function BarraDePesquisa() {
+    return (
+        <input type='search' placeholder="Digite o que você procura" />
+    )
+}
+ ```
+
+ O `type='search'` define o campo como pesquisa,
+e o `placeholder` adiciona o texto “Digite o que você procura” dentro do input.
+
+⚙️ Renderizando o Componente no App
+
+Para visualizar o componente, precisamos importá-lo e renderizá-lo no `App.jsx`.
+
+Abra o arquivo `App.jsx` e, no retorno da função, insira o componente `BarraDePesquisa` logo abaixo da `Sidebar`:
+
+```
+{/* código omitido */}
+
+return (
+    <Sidebar />
+    <BarraDePesquisa />
+)
+
+{/* código omitido */}
+
+```
+>Ao salvar, você verá o erro:
+
+```
+JSX expressions must have one parent element
+```
+
+>Isso ocorre porque todo retorno JSX precisa ter um elemento pai.
+
+**✅ Corrigindo o erro:**
+Basta envolver os componentes dentro de uma `<div>`:
+
+```
+{/* código omitido */}
+
+return (
+    <div>
+        <Sidebar />
+        <BarraDePesquisa />
+    </div>
+)
+
+{/* código omitido */}
+```
+
+Agora, ao atualizar o navegador (127.0.0.1:5173),
+a Barra de Pesquisa aparece logo abaixo da Sidebar — porém ainda sem estilização.
+
+🎨 Estilizando a Barra de Pesquisa
+
+Vamos abrir o Modelo e analisar as propriedades visuais da barra.
+
+🧾 Layout no Modelo
+
+| Propriedade  | Valor                |
+| ------------ | -------------------- |
+| Width        | Fixed (996px)        |
+| Height       | Hug (49px)           |
+| Radius       | 4px                  |
+| Padding      | 8px 16px             |
+| Cor de fundo | Cinza Escuro #171D1F |
+
+🗂️ Criando o Arquivo de Estilos
+
+No VS Code:
+
+Clique com o botão direito na pasta `BarraDePesquisa`
+
+Escolha New File
+
+Nomeie como `styles.css`
+
+No arquivo `index.jsx`, importe o CSS:
+
+```
+import './styles.css'
+
+export default function BarraDePesquisa() {
+    return (
+        <input type='search' placeholder="Digite o que você procura" className='barra-pesquisa'/>
+    )
+}
+```
+
+>⚡ Assim como fizemos na Sidebar, criamos um arquivo de estilos específico e aplicamos uma classe (barra-pesquisa) para evitar conflitos com outros inputs do projeto.
+
+🖌️ Criando o Estilo Base
+
+Abra o arquivo `styles.css` e adicione:
+
+```
+.barra-pesquisa {
+    width: 100%;
+    color: var(--cinza-claro);
+    padding: .5em 1em;
+    height: 49px;
+}
+```
+
+>Salve e visualize no navegador.
+Agora o input ocupa toda a largura da tela e o texto aparece com a cor definida.
+
+✏️ Aplicando Fonte e Tamanho
+
+Verificando no Figma, o texto do placeholder usa fonte padrão do projeto e tamanho 22px.
+
+Adicione as propriedades no CSS:
+```
+.barra-pesquisa {
+    width: 100%;
+    color: var(--cinza-claro);
+    padding: .5em 1em;
+    height: 49px;
+    font-family: var(--fonte);
+    font-size: 22px;
+}
+```
+>Agora, o campo já se aproxima mais do design do Modelo.
+
+🧭 Adicionando o Ícone de Lupa
+
+No Figma, clique na lupa ao lado do texto “Digite o que você procura”.
+
+No painel direito, selecione Export
+Escolha o formato SVG
+Clique em Export
+
+O arquivo será baixado automaticamente.
+Arraste-o para o VS Code, dentro da pasta `BarraDePesquisa`.
+
+Crie uma pasta chamada `assets` e mova o arquivo SVG para dentro, renomeando-o como `search.svg`.
+
+📁 Estrutura final:
+```
+componentes
+└── BarraDePesquisa
+    ├── assets
+    │   └── search.svg
+    ├── index.jsx
+    └── styles.css
+```
+Agora, no `styles.css`, adicione o background com o ícone de lupa:
+
+```
+.barra-pesquisa {
+    width: 100%;
+    color: var(--cinza-claro);
+    padding: .5em 1em;
+    height: 49px;
+    font-family: var(--fonte);
+    font-size: 22px;
+    background: var(--cinza-escuro) url('./assets/search.svg') no-repeat 32px;
+}
+```
+>Salve e visualize: a lupa aparecerá como imagem de fundo do input.
+
+⚖️ Ajustando o Espaçamento Interno
+
+O texto do placeholder está sobrepondo a imagem da lupa.
+Vamos corrigir isso aumentando o espaçamento à esquerda:
+
+```
+.barra-pesquisa {
+    width: 100%;
+    color: var(--cinza-claro);
+    padding: .5em 1em .5em 4em; /* adiciona mais espaço à esquerda */
+    height: 49px;
+    font-family: var(--fonte);
+    font-size: 22px;
+    background: var(--cinza-escuro) url('./assets/search.svg') no-repeat 32px;
+}
+```
+
+>Agora o texto ficará bem alinhado, com espaçamento adequado entre o ícone e o texto.
+
+🎯 Finalizando o Estilo
+
+Por fim, remova a borda padrão e adicione cantos arredondados:
+
+```
+.barra-pesquisa {
+    width: 100%;
+    color: var(--cinza-claro);
+    padding: .5em 1em .5em 4em;
+    height: 49px;
+    font-family: var(--fonte);
+    font-size: 22px;
+    background: var(--cinza-escuro) url('./assets/search.svg') no-repeat 32px;
+    border: none;
+    border-radius: 4px;
+}
+```
+
+>Salve e confira no navegador — o resultado agora está idêntico ao design do Modelo 🖤
+
+
+✅ Resultado Final
+
+🎉 Componente BarraDePesquisa concluído!
+
+Ícone de lupa à esquerda
+
+Cor de fundo conforme o design
+
+Fonte e tamanho ajustados
+
+Borda removida e cantos arredondados
+
+Nosso projeto está cada vez mais próximo do visual completo definido no Modelo!
 
 
 
