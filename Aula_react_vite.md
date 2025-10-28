@@ -524,7 +524,7 @@ Todos os componentes que criarmos seguirão essa mesma estrutura.
 
 **Importando e Utilizando Imagens**
 
-No Figma, podemos visualizar o design do nosso projeto.
+No Modelo, podemos visualizar o design do nosso projeto.
 O Sidebar é uma barra de menu lateral que contém:
 
 O logo do CodeConnect
@@ -533,7 +533,7 @@ Um botão de publicar
 
 E uma lista de links, cada um com um ícone e um nome.
 
-## 🔽 Baixando as imagens do Figma
+## 🔽 Baixando as imagens do Modelo
 
 ---
 **Prototipo**
@@ -597,7 +597,7 @@ export default function Sidebar() {
 
 **Adicionando o Botão Publicar**
 
-O próximo elemento no Figma é o botão “Publicar”, que faz parte do menu lateral.
+O próximo elemento no Modelo é o botão “Publicar”, que faz parte do menu lateral.
 Vamos adicionar ele dentro de um <nav> (menu de navegação).
 
 Atualize seu index.jsx:
@@ -687,7 +687,7 @@ Crie um arquivo Sidebar.css e estilize o componente — adicionando espaçamento
 
 Até agora, construímos o **componente Sidebar** com o logo do CodeConnect, o botão **Publicar** e o primeiro link do menu — o **Feed**.
 
-Nesta parte da aula, vamos adicionar os **demais itens de navegação** conforme o layout do **Figma**, finalizando a estrutura do componente.
+Nesta parte da aula, vamos adicionar os **demais itens de navegação** conforme o layout do **Modelo**, finalizando a estrutura do componente.
 
 ---
 
@@ -771,7 +771,7 @@ A importação dos ícones deve ser feita antes do `export default function Side
 
 Os links adicionados (Perfil, Sobre nós, Sair) seguem o mesmo padrão do link Feed já implementado anteriormente.
 
-Com isso, finalizamos a implementação de todos os links de navegação do Sidebar. O próximo passo será estilizar a barra lateral para que fique visualmente igual ao design no Figma.
+Com isso, finalizamos a implementação de todos os links de navegação do Sidebar. O próximo passo será estilizar a barra lateral para que fique visualmente igual ao design no Modelo.
 
 ```
                     <li>
@@ -951,7 +951,7 @@ fundo branco, links azuis e listas com marcadores padrão.
 
 ✍️ Importando a Fonte no Projeto
 
-Para aplicar a fonte correta, vamos consultar o Figma, na seção Guia de Estilos.
+Para aplicar a fonte correta, vamos consultar o Modelo, na seção Guia de Estilos.
 A fonte utilizada é Prompt, com os pesos 400 (Regular) e 500 (Medium).
 
 Passo a passo:
@@ -994,7 +994,7 @@ Cole o código dentro do `<head>`do seu index.html, logo após a tag `<meta>`:
 
 🌈 Criando Variáveis de Cores e Fonte
 
-No Figma, na seção Guia de Estilos, temos também as cores do projeto.
+No Modelo, na seção Guia de Estilos, temos também as cores do projeto.
 Por exemplo, o Verde destaque possui o valor hexadecimal `#81FE88`.
 
 No VS Code, abra o arquivo `index.css` e adicione as variáveis dentro do `:root {}:`
@@ -1032,7 +1032,7 @@ No próximo passo, começaremos a estilização do componente!
 
 Vamos melhorar a aparência do nosso projeto?
 
-Lembre-se de **criar as variáveis CSS** conforme o **guia de estilos do Figma**.  
+Lembre-se de **criar as variáveis CSS** conforme o **guia de estilos do Modelo**.  
 Vamos conferir a aparência atual do projeto. Estamos percebendo alguns **espaçamentos no navegador entre a lista e o fim da janela**.
 
 Isso indica que existem alguns estilos aplicados que não implementamos.  
@@ -1056,13 +1056,13 @@ Voltando ao navegador, as estilizações padrão já foram removidas
 
 🪶 Aplicando Cor de Fundo e Fonte
 
-Observando o Figma, temos um modelo chamado “Feed”, onde notamos que existe:
+Observando o Modelo, temos um modelo chamado “Feed”, onde notamos que existe:
 
 uma cor de fundo aplicada a toda a aplicação;
 
 e uma fonte padrão usada no projeto.
 
-Para descobrir a cor de fundo, clique na palavra “Feed” no canto superior esquerdo do modelo no Figma.
+Para descobrir a cor de fundo, clique na palavra “Feed” no canto superior esquerdo do modelo no Modelo.
 No menu de propriedades, à direita, você verá que a cor de fundo é grafite.
 
 Vamos aplicar isso no `index.css`.
@@ -1078,7 +1078,7 @@ body {
 
 🧱 Criando o Arquivo de Estilos da Sidebar
 
-No Figma, dentro do modelo Feed, conseguimos visualizar algumas estilizações aplicáveis à Sidebar:
+No Modelo, dentro do modelo Feed, conseguimos visualizar algumas estilizações aplicáveis à Sidebar:
 
 Cor de fundo: cinza-escuro
 
@@ -1130,7 +1130,7 @@ A unidade em é relativa ao tamanho da fonte, e costuma deixar o layout mais fle
 
 🧭 Estilizando a Lista de Links
 
-No Figma, observamos um espaçamento de 40px entre os itens da lista.
+No Modelo, observamos um espaçamento de 40px entre os itens da lista.
 
 Adicionando a classe na lista
 ```
@@ -1228,7 +1228,7 @@ Estilizando os links
 }
 ```
 
->O link ativo aparecerá em branco, conforme o Figma.
+>O link ativo aparecerá em branco, conforme o Modelo.
 
 🚀 Estilizando o Botão de Publicar
 ```
