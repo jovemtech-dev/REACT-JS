@@ -1000,8 +1000,15 @@ Por exemplo, o Verde destaque possui o valor hexadecimal `#81FE88`.
 No VS Code, abra o arquivo `index.css` e adicione as variáveis dentro do `:root {}:`
 ```
 :root {
-    --verde-destaque: #81FE88;
-    --fonte: 'Prompt', sans-serif;
+  --verde-destaque: #81FE88;
+  --verde-petroleo: #132E35;
+  --grafite: #01080E;
+  --cinza-escuro: #171D1F;
+  --cinza-medio: #888888;
+  --cinza: #3E3E3F;
+  --cinza-claro: #BCBCBC;
+  --offwhite: #E1E1E1;
+  --branco: #FFFFFF;
 }
 ```
 💡 Dica:
