@@ -1026,6 +1026,251 @@ E as variáveis de cor e fonte definidas no CSS
 No próximo passo, começaremos a estilização do componente!
 
 
+# 🎨 Melhorando a Aparência do Projeto
+
+## 💡 Introdução
+
+Vamos melhorar a aparência do nosso projeto?
+
+Lembre-se de **criar as variáveis CSS** conforme o **guia de estilos do Figma**.  
+Vamos conferir a aparência atual do projeto. Estamos percebendo alguns **espaçamentos no navegador entre a lista e o fim da janela**.
+
+Isso indica que existem alguns estilos aplicados que não implementamos.  
+Vamos removê-los acessando o `index.css` e, na linha 14, adicionando `*{}` contendo as propriedades `margin: 0;`, `padding: 0;` e `box-sizing: border-box;`.
+
+---
+
+## 🧹 Resetando o CSS
+
+```
+css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+```
+
+Essas linhas funcionam como um reset CSS simplificado.
+Voltando ao navegador, as estilizações padrão já foram removidas
+
+🪶 Aplicando Cor de Fundo e Fonte
+
+Observando o Figma, temos um modelo chamado “Feed”, onde notamos que existe:
+
+uma cor de fundo aplicada a toda a aplicação;
+
+e uma fonte padrão usada no projeto.
+
+Para descobrir a cor de fundo, clique na palavra “Feed” no canto superior esquerdo do modelo no Figma.
+No menu de propriedades, à direita, você verá que a cor de fundo é grafite.
+
+Vamos aplicar isso no `index.css`.
+Após o seletor `*{}`, pressione Enter duas vezes e crie a tag `body {}` na linha 20, adicionando o código abaixo:
+
+```
+body {
+  background-color: var(--grafite);
+  font-family: var(--fonte);
+}
+```
+>Após salvar e verificar no navegador, o fundo branco desaparece e a fonte é alterada.
+
+🧱 Criando o Arquivo de Estilos da Sidebar
+
+No Figma, dentro do modelo Feed, conseguimos visualizar algumas estilizações aplicáveis à Sidebar:
+
+Cor de fundo: cinza-escuro
+
+Borda arredondada: 8px
+
+Padding: 40px 16px
+
+Largura: 177px
+
+🗂️ Criando o arquivo
+
+Na pasta `componentes/Sidebar`, clique com o botão direito e selecione New File
+Nomeie o arquivo como `styles.css`
+
+🧩 Importando no componente
+
+No arquivo `index.jsx` da Sidebar, adicione no final da lista de importações:
+```
+import './styles.css';
+```
+
+Exemplo completo:
+
+```
+import Logo from './assets/Logo.svg';
+import Feed from './assets/feed.svg';
+import Account from './assets/account_circle.svg';
+import Info from './assets/info.svg';
+import Logout from './assets/logout.svg';
+import './styles.css';
+
+export default function Sidebar() {
+    // código omitido
+}
+```
+
+🎨 Estilizando o Sidebar
+
+```
+aside {
+    background-color: var(--cinza-escuro);
+    padding: 2.5em 1em;
+    width: 177px;
+    border-radius: 8px;
+}
+```
+>💡 O valor de padding foi convertido de 40px 16px para 2.5em 1em.
+A unidade em é relativa ao tamanho da fonte, e costuma deixar o layout mais flexível.
+
+🧭 Estilizando a Lista de Links
+
+No Figma, observamos um espaçamento de 40px entre os itens da lista.
+
+Adicionando a classe na lista
+```
+<ul className='lista-sidebar'>
+    <li>
+        <a href='#'>Publicar</a>
+    </li>
+    <li>
+        <a href='#'>
+            <img src={Feed} alt='' />
+            <span>Feed</span>
+        </a>
+    </li>
+</ul>
+```
+>💡 Em React, usamos className em vez de class, pois class é uma palavra reservada no JavaScript.
+
+Estilizando no CSS
+```
+.lista-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+    list-style-type: none;
+    margin-top: 5em;
+}
+```
+
+Essas propriedades:
+
+transformam a lista em container flexível;
+
+criam espaçamento uniforme entre os itens com `gap;`
+
+removem o estilo padrão da lista `(list-style-type: none);`
+
+e adicionam espaçamento superior com `margin-top`.
+
+🧩 Estilizando os Itens da Lista
+```
+.lista-sidebar li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+    gap: 10px;
+}
+```
+>Essas propriedades alinham ícones e texto verticalmente, centralizando-os com espaçamento consistente.
+
+🔗 Removendo Estilos Padrão dos Links
+
+```
+<ul className='lista-sidebar'>
+    <li>
+        <a href='#'>Publicar</a>
+    </li>
+    <li>
+        <a href='#' className='item__link'>
+            <img src={Feed} alt='' />
+            <span>Feed</span>
+        </a>
+    </li>
+</ul>
+```
+Estilizando os links
+```
+<ul className='lista-sidebar'>
+    <li>
+        <a href='#'>Publicar</a>
+    </li>
+    <li>
+        <a href='#' className='item__link'>
+            <img src={Feed} alt='' />
+            <span>Feed</span>
+        </a>
+    </li>
+</ul>
+```
+>Agora os links aparecem na cor cinza-claro e sem sublinhado.
+
+✴️ Destacando o Link Ativo
+
+```
+<li>
+    <a href='#' className='item__link item__link--ativo'>
+        <img src={Feed} alt='' />
+        <span>Feed</span>
+    </a>
+</li>
+```
+```
+.item__link--ativo {
+    color: var(--branco);
+}
+```
+
+>O link ativo aparecerá em branco, conforme o Figma.
+
+🚀 Estilizando o Botão de Publicar
+```
+<li>
+    <a href='#' className='item__link-publicacao'>Publicar</a>
+</li>
+```
+```
+.item__link-publicacao {
+    border: 1px solid var(--verde-destaque);
+    color: var(--verde-destaque);
+    padding: 0.75em 1em;
+    border-radius: 8px;
+    text-decoration: none;
+}
+```
+Essas definições aplicam:
+
+* borda verde,
+
+* texto verde,
+
+* cantos arredondados,
+
+* espaçamento interno proporcional,
+
+* e removem o sublinhado.
+
+✅ Resultado Final
+
+Agora temos:
+
+O Sidebar completamente estilizado conforme o modelo;
+
+Cores, fontes e espaçamentos padronizados;
+
+Layout limpo e consistente com o design.
+
+Com sucesso, construímos e estilizamos nosso primeiro componente! 🎉
+Podemos continuar com o restante do projeto.
+
+
 
 
 
