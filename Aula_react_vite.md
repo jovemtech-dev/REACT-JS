@@ -1671,7 +1671,7 @@ Com sucesso, construímos e estilizamos nossos primeiros componentes em React, a
 🎉 Agora temos uma Barra de Pesquisa funcional e responsiva, pronta para evoluir com filtros e buscas dinâmicas!
 
 
-
+[Atividade Acesse Aqui](https://forms.gle/4TyXh3kUoFXLnsGJ9)
 
 
 
