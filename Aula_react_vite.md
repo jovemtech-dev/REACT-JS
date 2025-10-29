@@ -1507,6 +1507,171 @@ Borda removida e cantos arredondados
 Nosso projeto está cada vez mais próximo do visual completo definido no Modelo!
 
 
+# 🧠 Aula 5: Gerenciando o Estado de Componentes com useState
+
+## 💡 Introdução
+
+Após concluirmos a criação da interface visual da **Barra de Pesquisa**, o próximo passo é adicionar sua funcionalidade.  
+Para incorporar recursos futuros, como **filtros ou buscas em tempo real**, precisamos ter controle sobre o que o usuário digita no campo de pesquisa.
+
+Para isso, vamos utilizar um dos hooks mais fundamentais do React: o **useState**.
+
+---
+
+## 🎣 Usando o Hook useState
+
+O `useState` é uma função do React que nos permite adicionar uma **variável de estado** a um componente funcional.  
+Essa variável de estado é um valor que, quando alterado, faz com que o componente seja **re-renderizado** na tela, refletindo a nova informação.
+
+---
+
+### 1️⃣ Implementação no Componente
+
+Vamos acessar o arquivo `index.jsx` do nosso componente **BarraDePesquisa**.  
+
+Primeiro, precisamos **importar o useState** diretamente do React.  
+Em seguida, dentro da função do componente, antes da instrução `return`, declaramos nosso estado.
+
+```jsx
+// componentes/BarraDePesquisa/index.jsx
+
+import { useState } from 'react';
+import './styles.css';
+
+export default function BarraDePesquisa() {
+    const [termoPesquisa, setTermoPesquisa] = useState('');
+
+    return (
+        <input 
+            type='search' 
+            placeholder="Digite o que você procura" 
+            className='barra-pesquisa'
+        />
+    )
+}
+```
+
+🧩 Entendendo a Sintaxe do useState
+
+A sintaxe:
+```
+const [termoPesquisa, setTermoPesquisa] = useState('');
+```
+pode ser dividida em três partes principais:
+
+1. `useState('')` → Esta é a chamada do hook.
+O valor passado dentro dos parênteses (`''`, uma string vazia) é o valor inicial do nosso estado.
+
+2. `termoPesquisa `→ Esta é a variável de estado.
+Ela sempre conterá o valor atual do estado. No início, seu valor será `''`.
+
+3. `setTermoPesquisa` → Esta é a função de atualização.
+Nunca modificamos o estado diretamente; usamos essa função para definir um novo valor.
+Quando `setTermoPesquisa` é chamada, o React atualiza o valor de `termoPesquisa` e re-renderiza o componente.
+
+🔗 Conectando o Estado ao Input
+
+Agora que temos nosso estado, precisamos conectá-lo ao elemento `<input>`.
+Fazemos isso usando duas props principais: `value` e `onChange`.
+
+value: Define que o valor exibido no campo será sempre o valor da variável de estado `termoPesquisa`.
+
+onChange: Evento que dispara sempre que o usuário digita algo no campo.
+Ele chama nossa função de atualização (`setTermoPesquisa`) e passa o novo valor (`evento.target.value`).
+
+🧱 Código final do componente
+```
+// componentes/BarraDePesquisa/index.jsx
+
+import { useState } from 'react'
+import './styles.css'
+
+export default function BarraDePesquisa() {
+    const [termoPesquisa, setTermoPesquisa] = useState('');
+
+    // Opcional: para visualizar as alterações no console
+    console.log(termoPesquisa);
+
+    return (
+        <input
+            type='search'
+            placeholder="Digite o que você procura"
+            className='barra-pesquisa'
+            value={termoPesquisa}
+            onChange={(evento) => setTermoPesquisa(evento.target.value)} 
+        />
+    )
+}
+```
+
+>💬 Dica:
+Abra o console do navegador e digite no campo de pesquisa.
+A cada caractere digitado, o React atualiza o estado e exibe o valor atual de `termoPesquisa`.
+
+🎨 Ajuste Final de Layout
+
+Agora, vamos ajustar o layout para que a BarraDePesquisa fique ao lado da Sidebar, e não abaixo dela.
+1️⃣ Atualizando `App.jsx`
+
+No componente `App`, envolva a `Sidebar` e a `BarraDePesquisa` em uma `<div>` com a classe `container`:
+```
+// App.jsx
+
+// ... código omitido ...
+
+function App() {
+  return (
+    <div className='container'>
+      <Sidebar />
+      <BarraDePesquisa />
+    </div>
+  )
+}
+
+export default App;
+```
+
+2️⃣ Estilizando o Container no `App.css`
+
+Agora, no arquivo `App.css`, adicione os estilos para criar um layout flexível:
+```
+/* App.css */
+
+.container {
+    width: 62vw;
+    margin: 3.5em auto;
+    display: flex;
+    gap: 16px;
+}
+```
+💬 O que esse CSS faz?
+
+`width: 62vw;  → Define a largura do container com base na largura da janela.
+
+`margin: 3.5em auto;` → Centraliza o container horizontalmente e adiciona espaçamento superior.
+
+`display: flex;` → Faz com que os elementos filhos (Sidebar e BarraDePesquisa) fiquem lado a lado.
+
+`gap: 16px;` → Adiciona espaço entre os dois elementos.
+
+✅ Conclusão
+
+Com sucesso, construímos e estilizamos nossos primeiros componentes em React, aprendendo sobre:
+
+* JSX
+
+* Props
+
+* Componentização
+
+* Estilização
+
+* E o poderoso hook useState 🎣
+
+🎉 Agora temos uma Barra de Pesquisa funcional e responsiva, pronta para evoluir com filtros e buscas dinâmicas!
+
+
+
 
 
 
