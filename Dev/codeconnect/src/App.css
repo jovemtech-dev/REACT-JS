@@ -11,9 +11,19 @@
   --branco: #FFFFFF;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container {
     width: 62vw;
     margin-left: 4em;
     display: flex;
     gap: 16px;
+}
+
+.container div {
+    flex-grow: 2;
 }
