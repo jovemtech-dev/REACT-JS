@@ -97,3 +97,8 @@
     gap: 4px;
     font-size: 15px;
 }
+
+.rodape__usuario {
+    display: block;
+    text-wrap: wrap;
+}

@@ -36,7 +36,7 @@ export default function Card() {
 
                     <div className='rodape__usuario'>
                         <img src={Icone} alt='imagem do usuário' />
-                        @moni
+                        @magaivi
                     </div>
                 </div>
             </div>
