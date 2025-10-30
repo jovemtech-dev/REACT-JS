@@ -2187,6 +2187,14 @@ Estilizando a seção do usuário
 * O espaço entre imagem e nome é de 8px.
 
 
+>💡 Dica final
+Essa é uma sugestão de estilização — sinta-se livre para modificar cores, tamanhos e margens conforme desejar.
+O importante é compreender a estrutura do componente e o comportamento visual de cada elemento.
+
+🎨 Desafio:
+Reproduza o layout do Figma e, se quiser, adicione efeitos de hover e transições suaves para deixar seu card mais interativo.
+
+
 
 
 
