@@ -1400,7 +1400,7 @@ Agora o input ocupa toda a largura da tela e o texto aparece com a cor definida.
 
 ✏️ Aplicando Fonte e Tamanho
 
-Verificando no Figma, o texto do placeholder usa fonte padrão do projeto e tamanho 22px.
+Verificando no Modelo, o texto do placeholder usa fonte padrão do projeto e tamanho 22px.
 
 Adicione as propriedades no CSS:
 ```
@@ -1417,7 +1417,7 @@ Adicione as propriedades no CSS:
 
 🧭 Adicionando o Ícone de Lupa
 
-No Figma, clique na lupa ao lado do texto “Digite o que você procura”.
+No Modelo, clique na lupa ao lado do texto “Digite o que você procura”.
 
 No painel direito, selecione Export
 Escolha o formato SVG
@@ -1507,6 +1507,786 @@ Borda removida e cantos arredondados
 Nosso projeto está cada vez mais próximo do visual completo definido no Modelo!
 
 
+# 🧠 Aula 5: Gerenciando o Estado de Componentes com useState
+
+## 💡 Introdução
+
+Após concluirmos a criação da interface visual da **Barra de Pesquisa**, o próximo passo é adicionar sua funcionalidade.  
+Para incorporar recursos futuros, como **filtros ou buscas em tempo real**, precisamos ter controle sobre o que o usuário digita no campo de pesquisa.
+
+Para isso, vamos utilizar um dos hooks mais fundamentais do React: o **useState**.
+
+---
+
+## 🎣 Usando o Hook useState
+
+O `useState` é uma função do React que nos permite adicionar uma **variável de estado** a um componente funcional.  
+Essa variável de estado é um valor que, quando alterado, faz com que o componente seja **re-renderizado** na tela, refletindo a nova informação.
+
+---
+
+### 1️⃣ Implementação no Componente
+
+Vamos acessar o arquivo `index.jsx` do nosso componente **BarraDePesquisa**.  
+
+Primeiro, precisamos **importar o useState** diretamente do React.  
+Em seguida, dentro da função do componente, antes da instrução `return`, declaramos nosso estado.
+
+```jsx
+// componentes/BarraDePesquisa/index.jsx
+
+import { useState } from 'react';
+import './styles.css';
+
+export default function BarraDePesquisa() {
+    const [termoPesquisa, setTermoPesquisa] = useState('');
+
+    return (
+        <input 
+            type='search' 
+            placeholder="Digite o que você procura" 
+            className='barra-pesquisa'
+        />
+    )
+}
+```
+
+🧩 Entendendo a Sintaxe do useState
+
+A sintaxe:
+```
+const [termoPesquisa, setTermoPesquisa] = useState('');
+```
+pode ser dividida em três partes principais:
+
+1. `useState('')` → Esta é a chamada do hook.
+O valor passado dentro dos parênteses (`''`, uma string vazia) é o valor inicial do nosso estado.
+
+2. `termoPesquisa `→ Esta é a variável de estado.
+Ela sempre conterá o valor atual do estado. No início, seu valor será `''`.
+
+3. `setTermoPesquisa` → Esta é a função de atualização.
+Nunca modificamos o estado diretamente; usamos essa função para definir um novo valor.
+Quando `setTermoPesquisa` é chamada, o React atualiza o valor de `termoPesquisa` e re-renderiza o componente.
+
+🔗 Conectando o Estado ao Input
+
+Agora que temos nosso estado, precisamos conectá-lo ao elemento `<input>`.
+Fazemos isso usando duas props principais: `value` e `onChange`.
+
+value: Define que o valor exibido no campo será sempre o valor da variável de estado `termoPesquisa`.
+
+onChange: Evento que dispara sempre que o usuário digita algo no campo.
+Ele chama nossa função de atualização (`setTermoPesquisa`) e passa o novo valor (`evento.target.value`).
+
+🧱 Código final do componente
+```
+// componentes/BarraDePesquisa/index.jsx
+
+import { useState } from 'react'
+import './styles.css'
+
+export default function BarraDePesquisa() {
+    const [termoPesquisa, setTermoPesquisa] = useState('');
+
+    // Opcional: para visualizar as alterações no console
+    console.log(termoPesquisa);
+
+    return (
+        <input
+            type='search'
+            placeholder="Digite o que você procura"
+            className='barra-pesquisa'
+            value={termoPesquisa}
+            onChange={(evento) => setTermoPesquisa(evento.target.value)} 
+        />
+    )
+}
+```
+
+>💬 Dica:
+Abra o console do navegador e digite no campo de pesquisa.
+A cada caractere digitado, o React atualiza o estado e exibe o valor atual de `termoPesquisa`.
+
+🎨 Ajuste Final de Layout
+
+Agora, vamos ajustar o layout para que a BarraDePesquisa fique ao lado da Sidebar, e não abaixo dela.
+1️⃣ Atualizando `App.jsx`
+
+No componente `App`, envolva a `Sidebar` e a `BarraDePesquisa` em uma `<div>` com a classe `container`:
+```
+// App.jsx
+
+// ... código omitido ...
+
+function App() {
+  return (
+    <div className='container'>
+      <Sidebar />
+      <BarraDePesquisa />
+    </div>
+  )
+}
+
+export default App;
+```
+
+2️⃣ Estilizando o Container no `App.css`
+
+Agora, no arquivo `App.css`, adicione os estilos para criar um layout flexível:
+```
+/* App.css */
+
+.container {
+    width: 62vw;
+    margin: 3.5em auto;
+    display: flex;
+    gap: 16px;
+}
+```
+💬 O que esse CSS faz?
+
+`width: 62vw;  → Define a largura do container com base na largura da janela.
+
+`margin: 3.5em auto;` → Centraliza o container horizontalmente e adiciona espaçamento superior.
+
+`display: flex;` → Faz com que os elementos filhos (Sidebar e BarraDePesquisa) fiquem lado a lado.
+
+`gap: 16px;` → Adiciona espaço entre os dois elementos.
+
+✅ Conclusão
+
+Com sucesso, construímos e estilizamos nossos primeiros componentes em React, aprendendo sobre:
+
+* JSX
+
+* Props
+
+* Componentização
+
+* Estilização
+
+* E o poderoso hook useState 🎣
+
+🎉 Agora temos uma Barra de Pesquisa funcional e responsiva, pronta para evoluir com filtros e buscas dinâmicas!
+
+## Aula – Filtros
+
+### Criando a pasta `Filtro` e o arquivo `index.jsx`
+
+1. No VS Code, acesse a pasta **componentes** no explorador de arquivos à esquerda.  
+2. Clique com o botão direito do mouse → **New Folder** → crie a pasta chamada `Filtro`.  
+3. Dentro dela, crie um novo arquivo: `index.jsx`.
+
+**Estrutura de pastas:**
+componentes
+└── Filtro
+└── index.jsx
+
+
+---
+
+### Estrutura inicial do componente
+
+No arquivo `index.jsx`, adicione o seguinte código:
+
+```jsx
+export default function Filtro() {
+    return (
+        <section className="container-filtro">
+            <ul>
+                <li>Programação</li>
+            </ul>
+            <button>Limpar tudo</button>
+        </section>
+    )
+}
+```
+
+>Essa é a estrutura básica de um Function Component em React.
+
+Inserindo o componente no App.jsx
+
+No arquivo `App.jsx`, importe o componente `Filtro` e o insira logo abaixo da barra de pesquisa:
+```
+function App() {
+  return (
+    <div className='container'>
+      <Sidebar />
+      <div>
+        <BarraDePesquisa />
+        <Filtro />
+      </div>
+    </div>
+  )
+}
+```
+Ajustando o layout com CSS
+
+No arquivo `App.css`, adicione a regra para expandir o espaço ocupado pela segunda coluna:
+```
+.container {
+    width: 62vw;
+    margin: 3.5em auto;
+    display: flex;
+    gap: 16px;
+}
+
+.container div {
+    flex-grow: 2;
+}
+```
+Estilizando o Filtro
+
+Dentro da pasta `Filtro`, crie o arquivo `styles.css`.
+Importe-o no `index.jsx`:
+```
+import './styles.css';
+```
+
+Estilos iniciais da lista
+
+```
+.container-filtro ul li {
+    background-color: var(--cinza-claro);
+    color: var(--cinza-escuro);
+    font-size: 18px;
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+}
+```
+
+Layout da seção de filtros
+
+```
+.container-filtro {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+```
+A `section` agora exibe a lista e o botão lado a lado, com espaçamento superior em relação à barra de pesquisa.
+
+Estilizando a lista `(ul)`
+
+```
+.container-filtro ul {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+```
+
+Estilizando o botão “Limpar tudo”
+
+```
+.container-filtro button {
+    border: none;
+    background-color: transparent;
+    color: var(--cinza-medio);
+    font-size: 18px;
+}
+```
+
+Resultado
+
+Após salvar e visualizar no navegador, a seção de filtros deve estar semelhante ao design no Modelo:
+
+* A lista de filtros é exibida horizontalmente.
+* O botão “Limpar tudo” está à direita.
+* Há espaçamento adequado entre a barra de pesquisa e os filtros.
+
+Conclusão
+
+Com isso, criamos o componente de Filtros completamente funcional e estilizado.
+Na próxima aula, será abordada a exibição das postagens das pessoas usuárias.
+
+
+
+## Aula – Criando o Card
+
+### Conhecendo a estrutura do Card
+
+Antes de começar a codificar, vamos observar no Modelo os elementos que compõem o card.
+
+Um **card** possui:
+- uma **imagem** no topo,
+- seguida por um **título** e um **texto** (resumo do artigo),
+- no canto inferior esquerdo, uma **lista de interações** (ícones de código, compartilhamento e comentário),
+- e no canto inferior direito, os **dados da pessoa usuária** (foto e nome de usuário).
+
+---
+
+### Baixando as imagens
+
+
+
+---
+
+### Estrutura de pastas
+
+No VS Code:
+
+1. Acesse `src > componentes`.
+2. Crie uma nova pasta chamada **Card**.
+3. Dentro dela, crie uma pasta chamada **assets**.
+4. Coloque dentro de `assets` todas as imagens exportadas do Modelo.
+
+A estrutura ficará assim:
+componentes
+└── Card
+├── assets
+│ ├── capa.png
+│ ├── code.svg
+│ ├── share.svg
+│ ├── chat.svg
+│ └── icone.png
+└── index.jsx
+
+
+---
+
+### Criando o arquivo `index.jsx`
+
+Dentro da pasta `Card`, crie o arquivo `index.jsx`.
+
+Estrutura inicial do componente:
+
+```jsx
+export default function Card() {
+    return (
+        
+    )
+}
+```
+
+Adicionando a capa do artigo
+
+Importe a imagem da capa e adicione o container da imagem:
+
+```
+import Capa from './assets/capa.png';
+
+export default function Card() {
+    return (
+        <article className="card">
+            <div className="card__imagem">
+                <img src={Capa} alt='imagem do post' />
+            </div>
+        </article>
+    )
+}
+```
+
+Adicionando os textos
+
+Agora, adicione os elementos de conteúdo (título e resumo):
+
+```
+<div className='card__conteudo'>
+    <div className='conteudo__texto'>
+        <h3>Título do post</h3>
+        <p>Resumo do post</p>
+    </div>
+</div>
+
+```
+
+Adicionando a lista de interações
+```
+Importe os ícones:
+import Code from './assets/code.svg';
+import Chat from './assets/chat.svg';
+import Share from './assets/share.svg';
+```
+
+Adicione o rodapé com as interações:
+```
+<div className='conteudo__rodape'>
+    <ul>
+        <li>
+            <img src={Code} alt='códigos' />
+            100
+        </li>
+        <li>
+            <img src={Share} alt='compartilhamentos' />
+            12
+        </li>
+        <li>
+            <img src={Chat} alt='comentários' />
+            10
+        </li>
+    </ul>
+</div>
+```
+
+Adicionando a imagem da pessoa usuária
+
+Importe a imagem da pessoa usuária:
+```
+import Icone from './assets/icone.png';
+
+```
+
+Adicione dentro do rodapé do conteúdo:
+
+```
+<div className='rodape__usuario'>
+    <img src={Icone} alt='imagem do usuário' />
+    @moni
+</div>
+
+```
+
+Código completo do componente `Card`
+```
+import Capa from './assets/capa.png';
+import Code from './assets/code.svg';
+import Chat from './assets/chat.svg';
+import Share from './assets/share.svg';
+import Icone from './assets/icone.png';
+
+export default function Card() {
+    return (
+        <article className="card">
+            <div className="card__imagem">
+                <img src={Capa} alt='imagem do post' />
+            </div>
+
+            <div className='card__conteudo'>
+                <div className='conteudo__texto'>
+                    <h3>Título do post</h3>
+                    <p>Resumo do post</p>
+                </div>
+
+                <div className='conteudo__rodape'>
+                    <ul>
+                        <li>
+                            <img src={Code} alt='códigos' />
+                            100
+                        </li>
+                        <li>
+                            <img src={Share} alt='compartilhamentos' />
+                            12
+                        </li>
+                        <li>
+                            <img src={Chat} alt='comentários' />
+                            10
+                        </li>
+                    </ul>
+
+                    <div className='rodape__usuario'>
+                        <img src={Icone} alt='imagem do usuário' />
+                        @moni
+                    </div>
+                </div>
+            </div>
+        </article>
+    )
+}
+```
+
+Importando o componente no `App.jsx`
+
+No arquivo `App.jsx`, faça o import do componente e o chame após o componente de ordenação:
+```
+import Card from './componentes/Card';
+
+function App() {
+  return (
+    <div className='container'>
+      <Sidebar />
+      <div>
+        <BarraDePesquisa />
+        <Filtro />
+        <Ordenacao />
+        <Card />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Conclusão
+
+🎉 Agora temos o componente Card criado e renderizado no navegador.
+
+Estruturamos o componente.
+
+Importamos as imagens.
+
+E organizamos todo o conteúdo conforme o modelo do Modelo.
+
+🧠 Atividade sugerida:
+
+Crie as estilizações do card com base nas classes já definidas `(card__imagem, conteudo__texto, conteudo__rodape, etc.)` para deixá-lo igual ao design do Modelo.
+
+💪 Desafio extra:
+Transforme os dados do card (título, resumo, quantidades, e nome do usuário) em dados dinâmicos, vindos de uma API ou de um objeto JavaScript.
+
+
+## Aula – Estilizando o Card
+
+Antes de começar as estilizações, será necessário **criar o arquivo `styles.css`** dentro da pasta do componente **Card**.
+
+Após criar o arquivo, importe-o dentro do `index.jsx` do componente Card utilizando:
+
+```
+jsx
+import "./styles.css";
+```
+Estilizando o container do Card
+```
+.card {
+    color: var(--cinza-claro);
+    text-decoration: none;
+    background-color: var(--cinza-escuro);
+    border-radius: 8px;
+
+    width: 50%;
+
+    display: grid;
+}
+```
+
+💬 Explicação:
+
+*Define a cor do texto como var(--cinza-claro);
+*Remove decorações de texto padrão;
+*Define o fundo como var(--cinza-escuro);
+*Arredonda as bordas em 8px;
+*Define largura de 50% do container pai;
+*Configura o layout do card como grid.
+
+
+Estilizando a imagem do card
+
+```
+.card__imagem {
+    width: 100%;
+    height: 240px;
+    background-color: var(--cinza-claro);
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__imagem img {
+    width: 90%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0px 16px 24px 0px #0000003D;
+}
+```
+💬 Explicação:
+
+O container `.card__imagem` tem altura fixa, fundo cinza claro, e centraliza seu conteúdo.
+
+A imagem dentro do container tem tamanho ajustado, cobre o espaço disponível e possui uma sombra para dar destaque visual.
+
+Estilizando o conteúdo textual do card
+
+```
+.card__conteudo {
+    padding: 16px;
+    height: 100%;
+}
+
+.card__link {
+    text-decoration: none;
+    color: var(--cinza-claro);
+}
+
+.conteudo__texto {
+    margin-bottom: 67px;
+}
+
+.conteudo__texto h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.conteudo__texto p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 23px;
+}
+```
+
+💬 Explicação:
+
+* .card__conteudo define espaçamento interno e altura;
+* .card__link remove sublinhado de links e define a cor;
+* .conteudo__texto controla margens e organização de texto;
+* O título (h3) tem fonte de 18px e peso 600;
+* O parágrafo (p) tem fonte de 15px e altura de linha de 23px.
+
+
+Estilizando o rodapé do card
+
+```
+.conteudo__rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.conteudo__rodape ul {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    align-items: baseline;
+}
+
+.conteudo__rodape div {
+    flex-grow: 0;
+}
+
+.conteudo__rodape ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+}
+ ```
+💬 Explicação:
+
+* Cria um layout flexível no rodapé para alinhar os ícones e informações do usuário;
+* Remove os marcadores da lista (list-style: none);
+* Distribui os elementos de forma equilibrada (space-between);
+* Os itens da lista (li) ficam empilhados e centralizados verticalmente.
+
+
+Estilizando a seção do usuário
+```
+.rodape__usuario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rodape__usuario img {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+```
+
+💬 Explicação:
+
+* O layout é flexível e alinha verticalmente a imagem e o nome de usuário;
+* A imagem do usuário tem formato circular, com tamanho fixo (32x32px);
+* O espaço entre imagem e nome é de 8px.
+
+
+>💡 Dica final
+Essa é uma sugestão de estilização — sinta-se livre para modificar cores, tamanhos e margens conforme desejar.
+O importante é compreender a estrutura do componente e o comportamento visual de cada elemento.
+
+🎨 Desafio:
+Reproduza o layout do Modelo e, se quiser, adicione efeitos de hover e transições suaves para deixar seu card mais interativo.
+
+
+---
+## Aula 6: Buscando Dados de uma API com useEffect
+💡 Introdução: Tornando Componentes Dinâmicos
+Agora que construímos nosso componente de card, o próximo passo é alimentá-lo com dados dinâmicos vindos de uma fonte externa, em vez de dados fixos no código. Para isso, vamos usar uma API simulada que contém as publicações do CodeConnect.
+
+`API: https://my-json-server.typicode.com/MonicaHillman/codeconnect-api/publicacoes`
+Para buscar esses dados e usá-los em nossa aplicação, vamos aprender sobre outro hook fundamental do React: o useEffect.
+***🎣 O Hook useEffect***
+O useEffect é usado para executar "efeitos colaterais" (side effects) em componentes funcionais. Efeitos colaterais são ações que interagem com o "mundo exterior" ao componente, como:
+* Buscar dados de uma API.
+* Manipular o DOM diretamente.
+* Configurar subscriptions (inscrições a eventos).
+
+Usamos o `useEffect` para garantir que essas ações não bloqueiem a renderização da interface e ocorram no momento certo do ciclo de vida do componente.
+1. Criando o Estado para Armazenar os Dados
+Primeiro, precisamos de um lugar para guardar os dados que virão da API. Vamos criar uma variável de estado no nosso componente principal, o `App.jsx`.
+```
+Jsx
+// App.jsx
+import { useEffect, useState } from 'react';
+// ... outras importações
+
+function App() {
+  const [dados, setDados] = useState([]);
+
+  // ...
+}
+```
+>Nota: Iniciamos o estado com `useState([])`, um array vazio, pois a API nos retornará uma lista (um array) de publicações.
+
+2. Construindo a Requisição com `useEffect`
+Agora, vamos construir a requisição para a API. Faremos isso dentro de uma função useEffect para que a busca de dados ocorra após o componente ser renderizado pela primeira vez.
+```
+Jsx
+// App.jsx
+
+function App() {
+  const [dados, setDados] = useState([]);
+
+  useEffect(() => {
+    fetch('https://my-json-server.typicode.com/MonicaHillman/codeconnect-api/publicacoes')
+      .then(resposta => resposta.json())
+      .then(dadosDaAPI => setDados(dadosDaAPI));
+  }, []); // <-- Array de dependências vazio
+
+  // ... return do componente
+}
+```
+
+### 🧠 Entendendo o `useEffect`
+
+*   **Função de Callback:** O primeiro argumento do `useEffect` é a função que contém o nosso efeito colateral (o `fetch`).
+*   **`fetch(...)`**: Inicia a requisição para a URL da API.
+*   **`.then(resposta => resposta.json())`**: Pega a resposta da API e a converte para o formato JSON.
+*   **`.then(dadosDaAPI => setDados(dadosDaAPI))`**: Pega os dados já convertidos e os armazena em nosso estado usando a função `setDados`.
+*   **Array de Dependências (`[]`):** Este é o segundo argumento do `useEffect` e é crucial.
+    *   Quando o array está **vazio**, o `useEffect` executa sua função de callback **apenas uma vez**, logo após a primeira renderização do componente.
+    *   Isso é perfeito para buscar dados iniciais, pois evita que a requisição seja feita repetidamente a cada nova renderização.
+
+### 3. Verificando o Resultado
+
+Para confirmar que os dados foram buscados com sucesso, podemos adicionar um `console.log` temporário.
+
+```jsx
+// App.jsx
+
+function App() {
+  const [dados, setDados] = useState([]);
+
+  useEffect(() => {
+    // ... fetch
+  }, []);
+
+  // Verificando o estado após a busca de dados
+  console.log(dados);
+
+  return (
+    // ...
+  );
+}
+```
+Ao inspecionar o console do navegador, você verá um array com os objetos de cada publicação, confirmando que nossa requisição funcionou!
+
+***✅ Conclusão e Próximos Passos***
+
+Nesta aula, aprendemos a usar o hook useEffect para buscar dados de uma API externa de forma assíncrona, sem impactar a renderização inicial da nossa interface. Também armazenamos esses dados em uma variável de estado com useState.
+O próximo passo é pegar esses dados que agora vivem no estado dados e passá-los para nosso componente de card, para que ele possa exibir as publicações dinamicamente.
+
+
+
+
+[Atividade Acesse Aqui](https://forms.gle/4TyXh3kUoFXLnsGJ9)
 
 
 
