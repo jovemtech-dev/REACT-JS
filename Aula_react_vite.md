@@ -1670,6 +1670,140 @@ Com sucesso, construímos e estilizamos nossos primeiros componentes em React, a
 
 🎉 Agora temos uma Barra de Pesquisa funcional e responsiva, pronta para evoluir com filtros e buscas dinâmicas!
 
+## Aula – Filtros
+
+### Criando a pasta `Filtro` e o arquivo `index.jsx`
+
+1. No VS Code, acesse a pasta **componentes** no explorador de arquivos à esquerda.  
+2. Clique com o botão direito do mouse → **New Folder** → crie a pasta chamada `Filtro`.  
+3. Dentro dela, crie um novo arquivo: `index.jsx`.
+
+**Estrutura de pastas:**
+componentes
+└── Filtro
+└── index.jsx
+
+
+---
+
+### Estrutura inicial do componente
+
+No arquivo `index.jsx`, adicione o seguinte código:
+
+```jsx
+export default function Filtro() {
+    return (
+        <section className="container-filtro">
+            <ul>
+                <li>Programação</li>
+            </ul>
+            <button>Limpar tudo</button>
+        </section>
+    )
+}
+```
+
+>Essa é a estrutura básica de um Function Component em React.
+
+Inserindo o componente no App.jsx
+
+No arquivo `App.jsx`, importe o componente `Filtro` e o insira logo abaixo da barra de pesquisa:
+```
+function App() {
+  return (
+    <div className='container'>
+      <Sidebar />
+      <div>
+        <BarraDePesquisa />
+        <Filtro />
+      </div>
+    </div>
+  )
+}
+```
+Ajustando o layout com CSS
+
+No arquivo `App.css`, adicione a regra para expandir o espaço ocupado pela segunda coluna:
+```
+.container {
+    width: 62vw;
+    margin: 3.5em auto;
+    display: flex;
+    gap: 16px;
+}
+
+.container div {
+    flex-grow: 2;
+}
+```
+Estilizando o Filtro
+
+Dentro da pasta `Filtro`, crie o arquivo `styles.css`.
+Importe-o no `index.jsx`:
+```
+import './styles.css';
+```
+
+Estilos iniciais da lista
+
+```
+.container-filtro ul li {
+    background-color: var(--cinza-claro);
+    color: var(--cinza-escuro);
+    font-size: 18px;
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+}
+```
+
+Layout da seção de filtros
+
+```
+.container-filtro {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+```
+A `section` agora exibe a lista e o botão lado a lado, com espaçamento superior em relação à barra de pesquisa.
+
+Estilizando a lista `(ul)`
+
+```
+.container-filtro ul {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+```
+
+Estilizando o botão “Limpar tudo”
+
+```
+.container-filtro button {
+    border: none;
+    background-color: transparent;
+    color: var(--cinza-medio);
+    font-size: 18px;
+}
+```
+
+Resultado
+
+Após salvar e visualizar no navegador, a seção de filtros deve estar semelhante ao design no Figma:
+
+* A lista de filtros é exibida horizontalmente.
+* O botão “Limpar tudo” está à direita.
+* Há espaçamento adequado entre a barra de pesquisa e os filtros.
+
+Conclusão
+
+Com isso, criamos o componente de Filtros completamente funcional e estilizado.
+Na próxima aula, será abordada a exibição das postagens das pessoas usuárias.
+
+
+
+
 
 [Atividade Acesse Aqui](https://forms.gle/4TyXh3kUoFXLnsGJ9)
 
