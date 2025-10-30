@@ -99,6 +99,7 @@
 }
 
 .rodape__usuario {
-    display: block;
-    text-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

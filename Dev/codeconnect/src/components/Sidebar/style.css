@@ -53,7 +53,7 @@ aside {
 
 .item__link:hover {
     color: var(--branco);
-    filter: var(--branco);
+    filter: brightness(0) invert(1) contrast(200%);
 }
 
 .feed{
