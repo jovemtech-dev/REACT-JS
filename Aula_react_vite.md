@@ -1400,7 +1400,7 @@ Agora o input ocupa toda a largura da tela e o texto aparece com a cor definida.
 
 ✏️ Aplicando Fonte e Tamanho
 
-Verificando no Figma, o texto do placeholder usa fonte padrão do projeto e tamanho 22px.
+Verificando no Modelo, o texto do placeholder usa fonte padrão do projeto e tamanho 22px.
 
 Adicione as propriedades no CSS:
 ```
@@ -1417,7 +1417,7 @@ Adicione as propriedades no CSS:
 
 🧭 Adicionando o Ícone de Lupa
 
-No Figma, clique na lupa ao lado do texto “Digite o que você procura”.
+No Modelo, clique na lupa ao lado do texto “Digite o que você procura”.
 
 No painel direito, selecione Export
 Escolha o formato SVG
@@ -1790,7 +1790,7 @@ Estilizando o botão “Limpar tudo”
 
 Resultado
 
-Após salvar e visualizar no navegador, a seção de filtros deve estar semelhante ao design no Figma:
+Após salvar e visualizar no navegador, a seção de filtros deve estar semelhante ao design no Modelo:
 
 * A lista de filtros é exibida horizontalmente.
 * O botão “Limpar tudo” está à direita.
@@ -1800,6 +1800,393 @@ Conclusão
 
 Com isso, criamos o componente de Filtros completamente funcional e estilizado.
 Na próxima aula, será abordada a exibição das postagens das pessoas usuárias.
+
+
+
+## Aula – Criando o Card
+
+### Conhecendo a estrutura do Card
+
+Antes de começar a codificar, vamos observar no Modelo os elementos que compõem o card.
+
+Um **card** possui:
+- uma **imagem** no topo,
+- seguida por um **título** e um **texto** (resumo do artigo),
+- no canto inferior esquerdo, uma **lista de interações** (ícones de código, compartilhamento e comentário),
+- e no canto inferior direito, os **dados da pessoa usuária** (foto e nome de usuário).
+
+---
+
+### Baixando as imagens
+
+
+
+---
+
+### Estrutura de pastas
+
+No VS Code:
+
+1. Acesse `src > componentes`.
+2. Crie uma nova pasta chamada **Card**.
+3. Dentro dela, crie uma pasta chamada **assets**.
+4. Coloque dentro de `assets` todas as imagens exportadas do Modelo.
+
+A estrutura ficará assim:
+componentes
+└── Card
+├── assets
+│ ├── capa.png
+│ ├── code.svg
+│ ├── share.svg
+│ ├── chat.svg
+│ └── icone.png
+└── index.jsx
+
+
+---
+
+### Criando o arquivo `index.jsx`
+
+Dentro da pasta `Card`, crie o arquivo `index.jsx`.
+
+Estrutura inicial do componente:
+
+```jsx
+export default function Card() {
+    return (
+        
+    )
+}
+```
+
+Adicionando a capa do artigo
+
+Importe a imagem da capa e adicione o container da imagem:
+
+```
+import Capa from './assets/capa.png';
+
+export default function Card() {
+    return (
+        <article className="card">
+            <div className="card__imagem">
+                <img src={Capa} alt='imagem do post' />
+            </div>
+        </article>
+    )
+}
+```
+
+Adicionando os textos
+
+Agora, adicione os elementos de conteúdo (título e resumo):
+
+```
+<div className='card__conteudo'>
+    <div className='conteudo__texto'>
+        <h3>Título do post</h3>
+        <p>Resumo do post</p>
+    </div>
+</div>
+
+```
+
+Adicionando a lista de interações
+```
+Importe os ícones:
+import Code from './assets/code.svg';
+import Chat from './assets/chat.svg';
+import Share from './assets/share.svg';
+```
+
+Adicione o rodapé com as interações:
+```
+<div className='conteudo__rodape'>
+    <ul>
+        <li>
+            <img src={Code} alt='códigos' />
+            100
+        </li>
+        <li>
+            <img src={Share} alt='compartilhamentos' />
+            12
+        </li>
+        <li>
+            <img src={Chat} alt='comentários' />
+            10
+        </li>
+    </ul>
+</div>
+```
+
+Adicionando a imagem da pessoa usuária
+
+Importe a imagem da pessoa usuária:
+```
+import Icone from './assets/icone.png';
+
+```
+
+Adicione dentro do rodapé do conteúdo:
+
+```
+<div className='rodape__usuario'>
+    <img src={Icone} alt='imagem do usuário' />
+    @moni
+</div>
+
+```
+
+Código completo do componente `Card`
+```
+import Capa from './assets/capa.png';
+import Code from './assets/code.svg';
+import Chat from './assets/chat.svg';
+import Share from './assets/share.svg';
+import Icone from './assets/icone.png';
+
+export default function Card() {
+    return (
+        <article className="card">
+            <div className="card__imagem">
+                <img src={Capa} alt='imagem do post' />
+            </div>
+
+            <div className='card__conteudo'>
+                <div className='conteudo__texto'>
+                    <h3>Título do post</h3>
+                    <p>Resumo do post</p>
+                </div>
+
+                <div className='conteudo__rodape'>
+                    <ul>
+                        <li>
+                            <img src={Code} alt='códigos' />
+                            100
+                        </li>
+                        <li>
+                            <img src={Share} alt='compartilhamentos' />
+                            12
+                        </li>
+                        <li>
+                            <img src={Chat} alt='comentários' />
+                            10
+                        </li>
+                    </ul>
+
+                    <div className='rodape__usuario'>
+                        <img src={Icone} alt='imagem do usuário' />
+                        @moni
+                    </div>
+                </div>
+            </div>
+        </article>
+    )
+}
+```
+
+Importando o componente no `App.jsx`
+
+No arquivo `App.jsx`, faça o import do componente e o chame após o componente de ordenação:
+```
+import Card from './componentes/Card';
+
+function App() {
+  return (
+    <div className='container'>
+      <Sidebar />
+      <div>
+        <BarraDePesquisa />
+        <Filtro />
+        <Ordenacao />
+        <Card />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Conclusão
+
+🎉 Agora temos o componente Card criado e renderizado no navegador.
+
+Estruturamos o componente.
+
+Importamos as imagens.
+
+E organizamos todo o conteúdo conforme o modelo do Modelo.
+
+🧠 Atividade sugerida:
+
+Crie as estilizações do card com base nas classes já definidas `(card__imagem, conteudo__texto, conteudo__rodape, etc.)` para deixá-lo igual ao design do Modelo.
+
+💪 Desafio extra:
+Transforme os dados do card (título, resumo, quantidades, e nome do usuário) em dados dinâmicos, vindos de uma API ou de um objeto JavaScript.
+
+
+## Aula – Estilizando o Card
+
+Antes de começar as estilizações, será necessário **criar o arquivo `styles.css`** dentro da pasta do componente **Card**.
+
+Após criar o arquivo, importe-o dentro do `index.jsx` do componente Card utilizando:
+
+```
+jsx
+import "./styles.css";
+```
+Estilizando o container do Card
+```
+.card {
+    color: var(--cinza-claro);
+    text-decoration: none;
+    background-color: var(--cinza-escuro);
+    border-radius: 8px;
+
+    width: 50%;
+
+    display: grid;
+}
+```
+
+💬 Explicação:
+
+*Define a cor do texto como var(--cinza-claro);
+*Remove decorações de texto padrão;
+*Define o fundo como var(--cinza-escuro);
+*Arredonda as bordas em 8px;
+*Define largura de 50% do container pai;
+*Configura o layout do card como grid.
+
+
+Estilizando a imagem do card
+
+```
+.card__imagem {
+    width: 100%;
+    height: 240px;
+    background-color: var(--cinza-claro);
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__imagem img {
+    width: 90%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0px 16px 24px 0px #0000003D;
+}
+```
+💬 Explicação:
+
+O container `.card__imagem` tem altura fixa, fundo cinza claro, e centraliza seu conteúdo.
+
+A imagem dentro do container tem tamanho ajustado, cobre o espaço disponível e possui uma sombra para dar destaque visual.
+
+Estilizando o conteúdo textual do card
+
+```
+.card__conteudo {
+    padding: 16px;
+    height: 100%;
+}
+
+.card__link {
+    text-decoration: none;
+    color: var(--cinza-claro);
+}
+
+.conteudo__texto {
+    margin-bottom: 67px;
+}
+
+.conteudo__texto h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.conteudo__texto p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 23px;
+}
+```
+
+💬 Explicação:
+
+* .card__conteudo define espaçamento interno e altura;
+* .card__link remove sublinhado de links e define a cor;
+* .conteudo__texto controla margens e organização de texto;
+* O título (h3) tem fonte de 18px e peso 600;
+* O parágrafo (p) tem fonte de 15px e altura de linha de 23px.
+
+
+Estilizando o rodapé do card
+
+```
+.conteudo__rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.conteudo__rodape ul {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    align-items: baseline;
+}
+
+.conteudo__rodape div {
+    flex-grow: 0;
+}
+
+.conteudo__rodape ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+}
+ ```
+💬 Explicação:
+
+* Cria um layout flexível no rodapé para alinhar os ícones e informações do usuário;
+* Remove os marcadores da lista (list-style: none);
+* Distribui os elementos de forma equilibrada (space-between);
+* Os itens da lista (li) ficam empilhados e centralizados verticalmente.
+
+
+Estilizando a seção do usuário
+```
+.rodape__usuario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rodape__usuario img {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+```
+
+💬 Explicação:
+
+* O layout é flexível e alinha verticalmente a imagem e o nome de usuário;
+* A imagem do usuário tem formato circular, com tamanho fixo (32x32px);
+* O espaço entre imagem e nome é de 8px.
+
+
 
 
 
