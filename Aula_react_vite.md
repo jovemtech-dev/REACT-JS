@@ -535,6 +535,7 @@ E uma lista de links, cada um com um ícone e um nome.
 
 ## 🔽 Baixando as imagens do Modelo
 
+
 ---
 **Prototipo**
 
@@ -1819,7 +1820,7 @@ Um **card** possui:
 
 ### Baixando as imagens
 
-
+[Baixe Aqui](https://1drv.ms/f/c/08a6d1d355a14254/EvNsGpwK5AxIrCXLOg4Kp7IBkIzg_AwVQ_-eEkPsGNHPCg?e=TKky95)
 
 ---
 
