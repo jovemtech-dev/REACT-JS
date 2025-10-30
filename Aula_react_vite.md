@@ -1671,6 +1671,8 @@ Com sucesso, construímos e estilizamos nossos primeiros componentes em React, a
 
 🎉 Agora temos uma Barra de Pesquisa funcional e responsiva, pronta para evoluir com filtros e buscas dinâmicas!
 
+
+
 ## Aula – Filtros
 
 ### Criando a pasta `Filtro` e o arquivo `index.jsx`
@@ -1802,7 +1804,8 @@ Conclusão
 Com isso, criamos o componente de Filtros completamente funcional e estilizado.
 Na próxima aula, será abordada a exibição das postagens das pessoas usuárias.
 
-
+## Projeto ##
+[Atividade Acesse Aqui](https://link-url-here.org)
 
 ## Aula – Criando o Card
 
