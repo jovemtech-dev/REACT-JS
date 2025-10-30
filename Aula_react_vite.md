@@ -2192,10 +2192,96 @@ Essa é uma sugestão de estilização — sinta-se livre para modificar cores, 
 O importante é compreender a estrutura do componente e o comportamento visual de cada elemento.
 
 🎨 Desafio:
-Reproduza o layout do Figma e, se quiser, adicione efeitos de hover e transições suaves para deixar seu card mais interativo.
+Reproduza o layout do Modelo e, se quiser, adicione efeitos de hover e transições suaves para deixar seu card mais interativo.
 
 
+---
+## Aula 6: Buscando Dados de uma API com useEffect
+💡 Introdução: Tornando Componentes Dinâmicos
+Agora que construímos nosso componente de card, o próximo passo é alimentá-lo com dados dinâmicos vindos de uma fonte externa, em vez de dados fixos no código. Para isso, vamos usar uma API simulada que contém as publicações do CodeConnect.
 
+`API: https://my-json-server.typicode.com/MonicaHillman/codeconnect-api/publicacoes`
+Para buscar esses dados e usá-los em nossa aplicação, vamos aprender sobre outro hook fundamental do React: o useEffect.
+***🎣 O Hook useEffect***
+O useEffect é usado para executar "efeitos colaterais" (side effects) em componentes funcionais. Efeitos colaterais são ações que interagem com o "mundo exterior" ao componente, como:
+* Buscar dados de uma API.
+* Manipular o DOM diretamente.
+* Configurar subscriptions (inscrições a eventos).
+
+Usamos o `useEffect` para garantir que essas ações não bloqueiem a renderização da interface e ocorram no momento certo do ciclo de vida do componente.
+1. Criando o Estado para Armazenar os Dados
+Primeiro, precisamos de um lugar para guardar os dados que virão da API. Vamos criar uma variável de estado no nosso componente principal, o `App.jsx`.
+```
+Jsx
+// App.jsx
+import { useEffect, useState } from 'react';
+// ... outras importações
+
+function App() {
+  const [dados, setDados] = useState([]);
+
+  // ...
+}
+```
+>Nota: Iniciamos o estado com `useState([])`, um array vazio, pois a API nos retornará uma lista (um array) de publicações.
+
+2. Construindo a Requisição com `useEffect`
+Agora, vamos construir a requisição para a API. Faremos isso dentro de uma função useEffect para que a busca de dados ocorra após o componente ser renderizado pela primeira vez.
+```
+Jsx
+// App.jsx
+
+function App() {
+  const [dados, setDados] = useState([]);
+
+  useEffect(() => {
+    fetch('https://my-json-server.typicode.com/MonicaHillman/codeconnect-api/publicacoes')
+      .then(resposta => resposta.json())
+      .then(dadosDaAPI => setDados(dadosDaAPI));
+  }, []); // <-- Array de dependências vazio
+
+  // ... return do componente
+}
+```
+
+### 🧠 Entendendo o `useEffect`
+
+*   **Função de Callback:** O primeiro argumento do `useEffect` é a função que contém o nosso efeito colateral (o `fetch`).
+*   **`fetch(...)`**: Inicia a requisição para a URL da API.
+*   **`.then(resposta => resposta.json())`**: Pega a resposta da API e a converte para o formato JSON.
+*   **`.then(dadosDaAPI => setDados(dadosDaAPI))`**: Pega os dados já convertidos e os armazena em nosso estado usando a função `setDados`.
+*   **Array de Dependências (`[]`):** Este é o segundo argumento do `useEffect` e é crucial.
+    *   Quando o array está **vazio**, o `useEffect` executa sua função de callback **apenas uma vez**, logo após a primeira renderização do componente.
+    *   Isso é perfeito para buscar dados iniciais, pois evita que a requisição seja feita repetidamente a cada nova renderização.
+
+### 3. Verificando o Resultado
+
+Para confirmar que os dados foram buscados com sucesso, podemos adicionar um `console.log` temporário.
+
+```jsx
+// App.jsx
+
+function App() {
+  const [dados, setDados] = useState([]);
+
+  useEffect(() => {
+    // ... fetch
+  }, []);
+
+  // Verificando o estado após a busca de dados
+  console.log(dados);
+
+  return (
+    // ...
+  );
+}
+```
+Ao inspecionar o console do navegador, você verá um array com os objetos de cada publicação, confirmando que nossa requisição funcionou!
+
+***✅ Conclusão e Próximos Passos***
+
+Nesta aula, aprendemos a usar o hook useEffect para buscar dados de uma API externa de forma assíncrona, sem impactar a renderização inicial da nossa interface. Também armazenamos esses dados em uma variável de estado com useState.
+O próximo passo é pegar esses dados que agora vivem no estado dados e passá-los para nosso componente de card, para que ele possa exibir as publicações dinamicamente.
 
 
 
