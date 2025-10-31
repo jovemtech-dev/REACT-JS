@@ -2288,15 +2288,159 @@ Nesta aula, aprendemos a usar o hook useEffect para buscar dados de uma API exte
 O próximo passo é pegar esses dados que agora vivem no estado dados e passá-los para nosso componente de card, para que ele possa exibir as publicações dinamicamente.
 
 
+Passo 1: Modificando o App.jsx para Mapear os Dados e Passar Props
+Primeiro, vamos atualizar o App.jsx para que ele itere sobre os dados da API com .map() e passe as informações de cada post para o componente Card através de props.
+Abra o arquivo src/App.jsx e substitua o conteúdo pelo código abaixo:
+```
+
+import { useEffect, useState } from 'react';
+import './App.css';
+import Sidebar from './componentes/Sidebar';
+import BarraDePesquisa from './componentes/BarraDePesquisa';
+import Filtro from './componentes/Filtro';
+import Card from './componentes/Card';
+
+function App() {
+  const [dados, setDados] = useState([]);
+
+  useEffect(() => {
+    fetch('https://my-json-server.typicode.com/MonicaHillman/codeconnect-api/publicacoes')
+      .then(resposta => resposta.json())
+      .then(dadosDaAPI => setDados(dadosDaAPI));
+  }, []);
+
+  return (
+    <div className='container'>
+      <Sidebar />
+      <main>
+        <BarraDePesquisa />
+        <Filtro />
+        
+        {/* Renderiza a lista de cards dinamicamente */}
+        <ul className='lista-cards'>
+          {dados ? dados.map((item) => (
+            <li key={item.id}>
+              {/* Passando os dados de cada item como props para o Card */}
+              <Card
+                id={item.id}
+                imagemUrl={item.imagem_capa}
+                titulo={item.titulo}
+                resumo={item.resumo}
+                linhasDeCodigo={item.linhas_de_codigo}
+                compartilhamentos={item.compartilhamentos}
+                comentarios={item.comentarios}
+                usuario={item.usuario}
+              />
+            </li>
+          )) : null}
+        </ul>
+      </main>
+    </div>
+  );
+}
+````
+export default App;```
+**Observação:** Note que usei `item.id` para a `key`. É uma prática melhor usar um ID único vindo dos dados (se disponível) em vez do `index` do map, pois isso ajuda o React a otimizar a renderização.
+
+---
+
+### Passo 2: Recebendo as Props no Componente `Card`
+
+Agora que o `App.jsx` está enviando os dados, o componente `Card` precisa recebê-los e usá-los para exibir as informações dinâmicas.
+
+**Abra o arquivo `src/componentes/Card/index.jsx` e substitua seu conteúdo por este:**
+
+```jsx
+import './styles.css';
+import Code from './assets/code.svg';
+import Chat from './assets/chat.svg';
+import Share from './assets/share.svg';
+
+// Recebendo as props desestruturadas como parâmetros da função
+export default function Card({ imagemUrl, titulo, resumo, linhasDeCodigo, compartilhamentos, comentarios, usuario }) {
+    return (
+        <article className="card">
+            <div className="card__imagem">
+                {/* Usando a prop imagemUrl */}
+                <img src={imagemUrl} alt='Imagem de capa do post' />
+            </div>
+
+            <div className='card__conteudo'>
+                <div className='conteudo__texto'>
+                    {/* Usando as props titulo e resumo */}
+                    <h3>{titulo}</h3>
+                    <p>{resumo}</p>
+                </div>
+
+                <div className='conteudo__rodape'>
+                    <ul>
+                        <li>
+                            <img src={Code} alt='Ícone de código' />
+                            {/* Usando a prop linhasDeCodigo */}
+                            {linhasDeCodigo}
+                        </li>
+                        <li>
+                            <img src={Share} alt='Ícone de compartilhamento' />
+                            {/* Usando a prop compartilhamentos */}
+                            {compartilhamentos}
+                        </li>
+                        <li>
+                            <img src={Chat} alt='Ícone de comentários' />
+                            {/* Usando a prop comentarios */}
+                            {comentarios}
+                        </li>
+                    </ul>
+
+                    <div className='rodape__usuario'>
+                        {/* Usando o objeto usuario e suas propriedades */}
+                        <img src={usuario.imagem} alt={`Avatar de ${usuario.nome}`} />
+                        {usuario.nome}
+                    </div>
+                </div>
+            </div>
+        </article>
+    )
+}
+```
+O que mudou aqui:
+Removemos os imports de Capa e Icone, pois agora as imagens são dinâmicas.
+A função Card agora recebe as props ({ imagemUrl, titulo, ... }) como argumentos.
+Todo o conteúdo estático (textos, números e imagens) foi substituído pelas props, usando a sintaxe {nomeDaProp}.
+Passo 3: Estilizando a Lista de Cards
+Como você mencionou, agora só falta arrumar o posicionamento dos cards! Eles provavelmente estão aparecendo um embaixo do outro. Vamos usar Flexbox para alinhá-los corretamente.
+Abra o arquivo src/App.css e adicione o seguinte código no final:
+```
+CSS
+/* Dentro de src/App.css */
+
+.lista-cards {
+    list-style: none; /* Remove as bolinhas da lista */
+    padding: 0;
+    display: flex;     /* Ativa o Flexbox */
+    flex-wrap: wrap;   /* Permite que os itens quebrem para a próxima linha */
+    gap: 24px;         /* Espaçamento entre os cards */
+    margin-top: 1.5em; /* Espaçamento do topo */
+}
+```
+Com essas alterações, seu projeto agora implementa corretamente a aula de Props! Ao visualizar no navegador, você deverá ver vários cards, cada um com as informações únicas vindas da API, e eles estarão organizados em um grid flexível.
+
+
+
+
+
+
+---
+
+
 
 
 [Atividade Acesse Aqui](https://forms.gle/4TyXh3kUoFXLnsGJ9)
 
-
+---
 
 ## Projeto completo##
 
-[Atividade Acesse Aqui](https://1drv.ms/f/c/08a6d1d355a14254/EtmJopv6OPFMjIjb4GxXiP8Bx_d3YN93n9cKgW0YbfBqkg?e=ad98IU)
+[Projeto](https://1drv.ms/f/c/08a6d1d355a14254/EtmJopv6OPFMjIjb4GxXiP8Bx_d3YN93n9cKgW0YbfBqkg?e=ad98IU)
 
 ## 📚 **_Créditos_**
 
