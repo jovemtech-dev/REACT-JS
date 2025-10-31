@@ -2338,8 +2338,9 @@ function App() {
     </div>
   );
 }
-````
-export default App;```
+
+export default App;
+```
 **Observação:** Note que usei `item.id` para a `key`. É uma prática melhor usar um ID único vindo dos dados (se disponível) em vez do `index` do map, pois isso ajuda o React a otimizar a renderização.
 
 ---
@@ -2424,9 +2425,67 @@ CSS
 ```
 Com essas alterações, seu projeto agora implementa corretamente a aula de Props! Ao visualizar no navegador, você deverá ver vários cards, cada um com as informações únicas vindas da API, e eles estarão organizados em um grid flexível.
 
+## Posicionando os cards##
 
+Passo 1: Atualizando o Layout da Lista para Grid
+Vamos substituir o estilo flex que tínhamos antes pelo grid para criar um layout de duas colunas.
+Abra o arquivo src/App.css e substitua a estilização da classe .lista-cards pelo código abaixo:
+```
+CSS
+/* Dentro de src/App.css */
 
+.lista-cards {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5em;
 
+    /* Novas propriedades com Grid */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria 2 colunas de largura igual */
+    gap: 24px;                             /* Espaçamento entre os cards */
+}
+```
+**O que mudou:**
+*   `display: grid`: Ativa o layout de grid.
+*   `grid-template-columns: repeat(2, 1fr)`: Define que o grid terá duas colunas, e cada uma ocupará uma fração (`1fr`) do espaço disponível, resultando em colunas de largura idêntica.
+*   `gap: 24px`: Cria um espaçamento de 24px tanto entre as colunas quanto entre as linhas do grid.
+
+---
+
+### Passo 2: Ajustando a Largura do Card para 100%
+
+Para que os cards se ajustem corretamente dentro das colunas do grid que acabamos de criar, eles precisam ter uma largura de 100% do seu contêiner (a célula do grid).
+
+**Abra o arquivo `src/componentes/Card/styles.css` e altere a propriedade `width` na classe `.card`:**
+
+```
+css
+/* Dentro de src/componentes/Card/styles.css */
+
+.card {
+    color: var(--cinza-claro);
+    text-decoration: none;
+    background-color: var(--cinza-escuro);
+    border-radius: 8px;
+    width: 100%; /* Alterado de 50% para 100% */
+    display: flex; /* Usar flex aqui dentro do card ainda é uma boa ideia */
+    flex-direction: column; /* Para organizar a imagem e o conteúdo verticalmente */
+}
+```
+Observação: Adicionei display: flex e flex-direction: column ao card. Isso ajuda a garantir que o conteúdo interno (imagem e a área de texto/rodapé) se estique corretamente para preencher a altura do card, evitando que alguns cards fiquem mais curtos que outros na mesma linha do grid.
+Conclusão
+Excelente trabalho! Com essas alterações, a interface da sua aplicação está finalizada. Ao visualizar no navegador, você verá os cards perfeitamente alinhados em um grid de duas colunas, com espaçamento uniforme, correspondendo ao design do protótipo.
+
+O projeto passou por todas as etapas fundamentais do desenvolvimento com React:
+
+* Configuração com Vite.
+* Criação e estilização de componentes.
+* Gerenciamento de estado com useState.
+* Busca de dados de uma API com useEffect.
+* Comunicação entre componentes com Props.
+* Criação de layouts modernos com Grid.
+
+Agora, como você mesmo disse, o projeto está pronto para o próximo grande passo.
 
 
 ---
