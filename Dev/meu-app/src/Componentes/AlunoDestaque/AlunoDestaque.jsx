@@ -15,6 +15,7 @@ function AlunoDestaque({ aluno }) {
         <h2>{aluno.Nome}</h2>
         <p>Idade: {aluno.Idade}</p>
         <p>Cidade: {aluno.Cidade}</p>
+        <p>Curso: {aluno.Curso}</p>
 
       </div>
     </div>
