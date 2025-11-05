@@ -1,0 +1,40 @@
+/* --- RESET GLOBAL E CORREÇÃO DEFINITIVA --- */
+
+/* 1. Garante que o corpo da página e o container principal do React (#root)
+      não tenham nenhuma margem ou padding que impeça o conteúdo de tocar as bordas. */
+body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* 2. Define o fundo preto para a página inteira */
+body {
+  background-color: black;
+  font-family: Arial, sans-serif;
+}
+
+/* 3. Garante que o container da sua aplicação também não tenha espaçamentos indesejados */
+.App {
+  width: 100%;
+}
+
+
+/* --- SEUS ESTILOS EXISTENTES (AGORA FUNCIONARÃO CORRETAMENTE) --- */
+
+.conteudo-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px 20px;
+  box-sizing: border-box; /* Importante para o padding não somar à largura */
+}
+
+/* --- Media Queries para responsividade --- */
+@media (max-width: 768px) {
+  .conteudo-principal {
+    gap: 20px;
+    padding: 20px 15px;
+  }
+}
