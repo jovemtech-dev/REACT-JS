@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
 
     // URL pública da planilha CSV do Google
-    const URL = "???";
+    const URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLq16VmG4Rpxh-ktZvsBb1MOBPQN-ZRrbZxoB34L-J8iEzmCRQqb8CNtLxmBZKW31FWpZ9EgD_AMlh/pub?gid=0&single=true&output=csv";
 
     // Faz a requisição HTTP para buscar os dados da planilha
     fetch(URL)
